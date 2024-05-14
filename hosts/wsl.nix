@@ -4,7 +4,6 @@
   imports = [
     ../modules/common.nix
     ../modules/services.nix
-    ../modules/neovim.nix
   ];
 
   # WSL specific settings
