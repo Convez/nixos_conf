@@ -23,6 +23,7 @@
           nixos-wsl.nixosModules.default {
             system.stateVersion = "24.05";
             wsl.enable = true;
+            wsl.defaultUser = "convez";
             wsl.docker-desktop.enable = true;
           }
         ];
@@ -31,7 +32,7 @@
 
     
     homeConfigurations = {
-      convez = home-manager.lib.homeManagerConfiguration {
+      wsl = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./home/convez.nix

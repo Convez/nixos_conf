@@ -15,5 +15,7 @@
   home.packages = with pkgs; [
     wget
     curl
+    git
+    gh
   ];
 }
