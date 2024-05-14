@@ -6,6 +6,7 @@
     git
     wget
     curl
+    nodejs
   ];
 
   # Enable Flakes
