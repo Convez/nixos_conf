@@ -8,7 +8,7 @@
   };
 
   
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }: {
     nixosConfigurations = {
       # physical = nixpkgs.lib.nixosSystem {
       #   system = "x86_64-linux";
@@ -20,8 +20,7 @@
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-wsl.nixosModules.default
-          {
+          nixos-wsl.nixosModules.default {
             system.stateVersion = "24.05";
             wsl.enable = true;
             wsl.docker-desktop.enable = true;
