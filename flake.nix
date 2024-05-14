@@ -2,9 +2,9 @@
   description = "My NixOS configuration, used on laptop and WSL";
 
   inputs = {
-    <nixos-wsl/modules>;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager.url = "github:nix-community/home-manager";
-    system.stateversion = "23.11"
   };
 
   
@@ -20,16 +20,22 @@
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/wsl.nix
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            wsl.docker-desktop.enable = true;
+          }
         ];
       };
     };
+
     
     homeConfigurations = {
-      yourusername = home-manager.lib.homeManagerConfiguration {
+      convez = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-          ./home/home.nix
+          ./home/convez.nix
         ];
       };
     };
