@@ -7,6 +7,6 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = true;
-    }
-  }
+    };
+  };
 }
