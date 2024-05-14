@@ -4,6 +4,7 @@
   inputs = {
     <nixos-wsl/modules>;
     home-manager.url = "github:nix-community/home-manager";
+    system.stateversion = "23.11"
   };
 
   
