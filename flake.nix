@@ -26,6 +26,7 @@
             wsl.defaultUser = "convez";
             wsl.docker-desktop.enable = true;
           }
+          ./hosts/wsl.nix
         ];
       };
     };
