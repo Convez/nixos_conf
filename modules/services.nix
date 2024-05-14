@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 {
   # Enable necessary services
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "yes";
-  services.openssh.settings.PasswordAuthentication = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 2222 ];
+    settings = {
+      PermitRootLogin = "no"
+      PasswordAuthentication = true;
+    }
+  }
 }
