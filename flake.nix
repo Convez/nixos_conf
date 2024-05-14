@@ -2,7 +2,7 @@
   description = "My NixOS configuration, used on laptop and WSL";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    <nixos-wsl/modules>;
     home-manager.url = "github:nix-community/home-manager";
   };
 
