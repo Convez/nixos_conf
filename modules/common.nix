@@ -7,6 +7,7 @@
     wget
     curl
     nodejs
+    gh
   ];
 
   # Enable Flakes

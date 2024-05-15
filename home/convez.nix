@@ -13,9 +13,5 @@
 
   # Define home packages to install
   home.packages = with pkgs; [
-    wget
-    curl
-    git
-    gh
   ];
 }
