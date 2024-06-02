@@ -27,7 +27,7 @@ jobs:
       id: tarball
       shell: bash
       run: |
-       sudo ${{ steps.build.outputs.derivation }}/bin/nixos-wsl-tarball-builder wsl
+       sudo ${{ steps.build.outputs.derivation }}/bin/nixos-wsl-tarball-builder nixos-wsl.tar.gz
     
     - name: Archive NixOs WSL tarball
       uses: actions/upload-artifact@v4
