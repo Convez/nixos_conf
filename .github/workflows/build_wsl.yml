@@ -1,4 +1,5 @@
 name: "Build NixOs WSL tarball"
+run-name: "Build NixOs WSL tarball"
 on:
   workflow_dispatch:
 
