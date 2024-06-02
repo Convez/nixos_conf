@@ -9,11 +9,11 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install Nix ❄️
-      uses: nix-community/NixOS-WSL/.github/actions/install-nix/action.yml@main
+      uses: nix-community/NixOS-WSL/.github/actions/install-nix@main
     
 
     - name: Build Tarball 🛠️
-      uses: nix-community/NixOS-WSL/.github/actions/build-wsl-tarball/action.yml@main
+      uses: nix-community/NixOS-WSL/.github/actions/build-wsl-tarball@main
       with:
         config: wsl
         filename: nixos-wsl.tar.gz
