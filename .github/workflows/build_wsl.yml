@@ -1,4 +1,4 @@
-name: "Test"
+name: "Build NixOs WSL tarball"
 on:
   pull_request:
   push:
@@ -8,12 +8,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v27
+    - name: Install Nix ❄️
+      uses: nix-community/NixOS-WSL/.github/actions/install-nix/action.yml@main
     
-    - name: Build NixOs WSL tarball
-      run: |
-        sudo /usr/bin/nix run .#nixosConfigurations.wsl.config.system.build.tarballBuilder
-    
+
+    - name: Build Tarball 🛠️
+      uses: nix-community/NixOS-WSL/.github/actions/build-wsl-tarball/action.yml@main
+      with:
+        config: wsl
+        filename: nixos-wsl.tar.gz
+         
     - name: Archive NixOs WSL tarball
       uses: actions/upload-artifact@v4
       with:
