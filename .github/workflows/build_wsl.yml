@@ -12,7 +12,7 @@ jobs:
     
     - name: Build NixOs WSL tarball
       run: |
-        sudo nix run .#nixosConfigurations.wsl.config.system.build.tarballBuilder
+        sudo /usr/bin/nix run .#nixosConfigurations.wsl.config.system.build.tarballBuilder
     
     - name: Archive NixOs WSL tarball
       uses: actions/upload-artifact@v4
