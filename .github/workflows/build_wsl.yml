@@ -15,7 +15,7 @@ jobs:
       id: build
       run: |
         JSON=$(mktemp)
-        (nix build -L wsl --no-link --json >$JSON) |& sed -uE 's/^(trace: +)?warning:(\s+|$)/::warning::/;s/^(trace: +)?error:(\s+|$)/::error::/;s/^trace:(\s+|$)/::notice::trace: /'
+        (nix build -L .#nixosConfigurations.wsl.config.system.build.tarballBuilder --no-link --json >$JSON) |& sed -uE 's/^(trace: +)?warning:(\s+|$)/::warning::/;s/^(trace: +)?error:(\s+|$)/::error::/;s/^trace:(\s+|$)/::notice::trace: /'
         DRV=$(jq -r .[0].outputs.out <$JSON)
         echo "derivation=$DRV" >> $GITHUB_OUTPUT
         echo "- Built \`$DRV\`" >> $GITHUB_STEP_SUMMARY
