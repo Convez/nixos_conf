@@ -1,9 +1,9 @@
 name: "Build NixOs WSL tarball"
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
+
 jobs:
-  tests:
+  build-tarball:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -34,3 +34,4 @@ jobs:
       with:
         name: nixos-wsl
         path: nixos-wsl.tar.gz
+        retention-days: 1
