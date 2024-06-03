@@ -10,7 +10,6 @@ jobs:
     - uses: actions/checkout@v4
 
     - uses: ./.github/actions/install-nix
-    - uses: ./.github/actions/lint
     
     - name: Build NixOs WSL expression
       shell: bash
