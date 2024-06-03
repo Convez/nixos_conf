@@ -11,12 +11,12 @@
   
   outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-server, ... }: {
     nixosConfigurations = {
-      # physical = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     ./hosts/physical.nix
-      #   ];
-      # };
+      physical = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/physical.nix
+        ];
+      };
 
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
