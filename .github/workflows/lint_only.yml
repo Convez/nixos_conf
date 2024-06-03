@@ -9,5 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: .github/actions/install-nix
-    - uses: .github/actions/lint
+    - uses: ./.github/actions/install-nix
+
+    - uses: ./.github/actions/lint
