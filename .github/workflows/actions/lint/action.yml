@@ -1,0 +1,6 @@
+runs:
+    using: composite
+    steps:
+        - uses: .github/actions/install-nix
+        - run: statix check
+        - run: deadnix check

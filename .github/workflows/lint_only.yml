@@ -1,0 +1,13 @@
+name: "Lint Nix config"
+run-name: "Lint Nix config"
+on:
+  workflow_dispatch:
+
+jobs:
+  build-tarball:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: .github/actions/install-nix
+    - uses: .github/actions/lint
