@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./neovim.nix
+    ./programs/neovim.nix
+    ./programs/git.nix
   ];
 
   # Home manager user settings
@@ -13,6 +14,5 @@
 
   # Define home packages to install
   home.packages = with pkgs; [
-
   ];
 }

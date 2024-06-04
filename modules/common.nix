@@ -2,12 +2,9 @@
 {
   # Define common packages to install
   environment.systemPackages = with pkgs; [
-    vim
-    git
     wget
     curl
-    nodejs
-    gh
+    home-manager
   ];
 
   # Enable Flakes
