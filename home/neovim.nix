@@ -9,6 +9,7 @@
       vim-airline
       vim-airline-themes
       vim-fugitive
+      vim-plug
       nerdtree
     ];
 

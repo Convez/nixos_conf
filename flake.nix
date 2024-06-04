@@ -7,24 +7,33 @@
     home-manager.url = "github:nix-community/home-manager";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
+  
 
   
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-server, ... }: {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-server, ... }:
+  let 
+    
+    system = "x86_64-linux";
+    stateVersion = "24.05";
+    user = "convez";
+  
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations = {
       physical = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
           ./hosts/physical.nix
         ];
       };
 
       wsl = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         modules = [
           nixos-wsl.nixosModules.default {
-            system.stateVersion = "24.05";
+            system.stateVersion = "${stateVersion}";
             wsl.enable = true;
-            wsl.defaultUser = "convez";
+            wsl.defaultUser = "${user}";
             wsl.docker-desktop.enable = true;
           }
           vscode-server.nixosModules.default
@@ -37,10 +46,13 @@
     };
   
     homeConfigurations = {
-      wsl = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      convez = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit system stateVersion user;
+        };
         modules = [
-          ./home/convez.nix
+          ./home/${user}.nix
         ];
       };
     };
