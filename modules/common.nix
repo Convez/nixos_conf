@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    home-manager
   ];
 
   # Enable Flakes
