@@ -23,7 +23,8 @@
       physical = nixpkgs.lib.nixosSystem {
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ./hosts/physical.nix
+          ./hosts/latitude/configuration.nix
+          ./hosts/latitude/hardware-configuration.nix
         ];
       };
 
