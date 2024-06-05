@@ -13,6 +13,7 @@
       ../modules/gui.nix
       ../modules/audio.nix
       ../modules/services.nix
+      ../modules/users.nix
     ];
 }
 

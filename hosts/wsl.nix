@@ -3,7 +3,6 @@
 {
   imports = [
     ../modules/common.nix
-    ../modules/services.nix
   ];
 
   systemd.services.docker-sock = {

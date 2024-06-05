@@ -21,11 +21,13 @@
   in {
     nixosConfigurations = {
       latitude = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit system stateVersion user;
+        };
         modules = [
           ./modules/efi.nix
           ./hosts/physical.nix
           ./hosts/latitude/hardware-configuration.nix
-          ./home/convez.nix
         ];
       };
 
