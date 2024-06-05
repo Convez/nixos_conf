@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 {
-  # Enable necessary services
+  
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable OpenSSH services
   services.openssh = {
     enable = true;
     ports = [ 2222 ];

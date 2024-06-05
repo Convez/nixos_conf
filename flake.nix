@@ -20,11 +20,12 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
-      physical = nixpkgs.lib.nixosSystem {
+      latitude = nixpkgs.lib.nixosSystem {
         modules = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ./hosts/latitude/configuration.nix
+          ./modules/efi.nix
+          ./hosts/physical.nix
           ./hosts/latitude/hardware-configuration.nix
+          ./home/convez.nix
         ];
       };
 

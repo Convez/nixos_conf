@@ -6,6 +6,15 @@
     curl
   ];
 
+  # Set your time zone.
+  time.timeZone = "Europe/Rome";
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Install firefox.
+  programs.firefox.enable = true;
+
   # Enable Flakes
   nix = {
     package = pkgs.nixFlakes;
