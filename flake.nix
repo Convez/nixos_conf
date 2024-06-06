@@ -16,7 +16,6 @@
     system = "x86_64-linux";
     stateVersion = "24.05";
     user = "convez";
-  
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
