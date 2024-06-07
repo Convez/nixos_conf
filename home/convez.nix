@@ -5,6 +5,7 @@
     ../dev_tools/neovim.nix
     ../dev_tools/git.nix
     ../dev_tools/code.nix
+    ../dev_tools/vscodium.nix
   ];
 
   # Home manager user settings
