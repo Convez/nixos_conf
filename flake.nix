@@ -21,6 +21,7 @@
       latitude = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit system stateVersion user;
+          hostname = "latitude";
         };
         modules = [
           ./modules/efi.nix
@@ -33,6 +34,7 @@
         system = system;
         modules = [
           nixos-wsl.nixosModules.default {
+            networking.hostName = "wsl";
             system.stateVersion = "${stateVersion}";
             wsl.enable = true;
             wsl.defaultUser = "${user}";
@@ -48,13 +50,22 @@
     };
   
     homeConfigurations = {
-      convez = home-manager.lib.homeManagerConfiguration {
+      "convez@latitude" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit system stateVersion user;
         };
         modules = [
-          ./home/${user}.nix
+          ./home/latitude
+        ];
+      };
+      "convez@wsl" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit system stateVersion user;
+        };
+        modules = [
+          ./home/wsl
         ];
       };
     };

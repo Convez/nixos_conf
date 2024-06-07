@@ -1,12 +1,18 @@
 { config, pkgs, lib, stateVersion, user, ... }:
-
+let
+  settings = import ../../settings;
+in
 {
   imports = [
-    ../dev_tools/neovim.nix
-    ../dev_tools/git.nix
-    ../dev_tools/code.nix
-    ../dev_tools/vscodium.nix
+    settings
+    ../../dev_tools/neovim.nix
+    ../../dev_tools/git.nix
+    ../../dev_tools/vscodium.nix
   ];
+  
+  convez.coding = {
+    enable = false;
+  };
 
   # Home manager user settings
   home.username = "${user}";

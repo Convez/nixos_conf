@@ -1,8 +1,11 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, convez,... }:
+let
+ cfg = config.convez.coding;
+in
 {
+
   programs.vscode = {
-    enable = true;
+    enable = cfg.enable;
     extensions = with pkgs.vscode-extensions;[
       jnoortheen.nix-ide
     ];
