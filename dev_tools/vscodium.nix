@@ -1,18 +1,11 @@
-{ config, pkgs, convez,... }:
+{ config, pkgs, languages,... }:
 let
  cfg = config.convez.coding;
 in
 {
 
   programs.vscode = {
-    enable = cfg.enable;
-    extensions = with pkgs.vscode-extensions;[
-      jnoortheen.nix-ide
-    ];
-    userSettings = {
-      "nix.enableLanguageServer"= true;
-      "nix.formatterPath"= "nixpkgs-fmt";
-      "nix.serverPath"= "nixd";
-    };
+    enable = cfg.ides.code;
+    extensions = languages.codeExtensions;
   };
 }

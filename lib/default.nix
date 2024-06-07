@@ -8,4 +8,5 @@ in
     type = types.bool;
     example = true;
   };
+  importIf = k: t: if k then [t] else [];
 }

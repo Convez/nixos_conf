@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, languages, ... }:
+let
+ cfg = config.convez.coding;
+in
 {
   programs.neovim = {
-    enable = true;
+    enable = cfg.ides.vim;
     plugins = with pkgs.vimPlugins; [
       vim-nix
       coc-nvim

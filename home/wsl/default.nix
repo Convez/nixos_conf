@@ -1,17 +1,23 @@
 { config, pkgs, lib, stateVersion, user, ... }:
 let
-  settings = import ../../settings;
+  settings = import ../../settings {inherit lib;};
+  languages = import ../../languages {inherit config pkgs lib;};
+  dev_tools = import ../../dev_tools {inherit config pkgs languages;};
 in
 {
   imports = [
     settings
-    ../../dev_tools/neovim.nix
-    ../../dev_tools/git.nix
-    ../../dev_tools/vscodium.nix
+    dev_tools
   ];
   
   convez.coding = {
-    enable = false;
+    enable = true;
+    ides = {
+      vim = true;
+    };
+    languages = {
+      java = true;
+    };
   };
 
   # Home manager user settings
@@ -27,9 +33,6 @@ in
   };
 
   # Define home packages to install
-  home.packages = with pkgs; [
-    nixd
-    nixpkgs-fmt
-  ];
+  home.packages = languages.packages;
 
 }

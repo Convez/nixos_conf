@@ -1,12 +1,16 @@
 {lib, ...}:
 
 let
-  tools = import ../lib;
+  tools = import ../lib {inherit lib;};
   inherit (tools) mkEnDef;
 in{
   options.convez = {
     coding = {
       enable = mkEnDef "Enable coding goodies" false;
+      ides = {
+        vim =           mkEnDef "Install and configure NeoVim" false;
+        code =          mkEnDef "Install and configure VSCodium" false;
+      };
       languages = {
         c =           mkEnDef "Enable Clang tooling" false;
         c_sharp =     mkEnDef "Enable C# tooling" false;
