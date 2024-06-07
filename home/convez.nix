@@ -1,10 +1,10 @@
-{ config, pkgs, stateVersion, user, ... }:
+{ config, pkgs, lib, stateVersion, user, ... }:
 
 {
   imports = [
-    ./programs/neovim.nix
-    ./programs/git.nix
-    ./programs/vscodium.nix
+    ../dev_tools/neovim.nix
+    ../dev_tools/git.nix
+    ../dev_tools/code.nix
   ];
 
   # Home manager user settings

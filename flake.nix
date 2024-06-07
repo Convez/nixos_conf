@@ -12,7 +12,6 @@
   
   outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-server, ... }:
   let 
-    
     system = "x86_64-linux";
     stateVersion = "24.05";
     user = "convez";
