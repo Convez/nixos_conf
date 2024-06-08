@@ -1,4 +1,4 @@
-{ config, pkgs, hostname,... }:
+{ hostname, ... }:
 {
   networking.hostName = "${hostname}"; # Define your hostname.
   # Pick only one of the below networking options.

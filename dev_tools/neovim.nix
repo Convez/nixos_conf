@@ -1,4 +1,4 @@
-{ config, pkgs, languages, ... }:
+{ config, pkgs, ... }:
 let
  cfg = config.convez.coding;
 in

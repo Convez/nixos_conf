@@ -1,15 +1,28 @@
 { config, pkgs, lib, stateVersion, user, ... }:
 
 let 
-  settings = import ../../settings;
+  settings = import ../../settings {inherit lib;};
+  languages = import ../../languages {inherit config pkgs lib;};
+  dev_tools = import ../../dev_tools {inherit config pkgs languages;};
+  gnome = import ../../gnome {inherit config pkgs lib;};
 in 
 {
   imports = [
     settings
-    ../../dev_tools/neovim.nix
-    ../../dev_tools/git.nix
-    ../../dev_tools/vscodium.nix
+    dev_tools
   ];
+
+  convez.coding = {
+    enable = true;
+    ides = {
+      vim = true;
+      code = true;
+    };
+    languages = {
+      java = true;
+      nix = true;
+    };
+  };
 
   # Home manager user settings
   home.username = "${user}";
@@ -24,9 +37,14 @@ in
   };
 
   # Define home packages to install
-  home.packages = with pkgs; [
-    nixd
-    nixpkgs-fmt
+  home.packages = (with pkgs; [
+    minikube
+    kubectl
+  ]) ++
+    languages.packages ++ 
+    gnome.packages;
+  
+  dconf.settings = lib.mergeAttrsList [
+    gnome.dconf
   ];
-
 }

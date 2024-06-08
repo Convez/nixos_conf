@@ -17,6 +17,7 @@ in
     };
     languages = {
       java = true;
+      nix = true;
     };
   };
 

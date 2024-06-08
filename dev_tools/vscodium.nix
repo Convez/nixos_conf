@@ -1,4 +1,4 @@
-{ config, pkgs, languages,... }:
+{ config, languages,... }:
 let
  cfg = config.convez.coding;
 in
@@ -7,5 +7,6 @@ in
   programs.vscode = {
     enable = cfg.ides.code;
     extensions = languages.codeExtensions;
+    userSettings = languages.codeSettings;
   };
 }

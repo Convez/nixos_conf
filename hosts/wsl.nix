@@ -1,5 +1,5 @@
 # ~/nixos-config/hosts/wsl.nix
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   imports = [
     ../modules/common.nix

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   
   # Enable CUPS to print documents.
@@ -13,4 +13,7 @@
       PasswordAuthentication = true;
     };
   };
+  
+  #Enable docker
+  virtualisation.docker.enable =  true;
 }

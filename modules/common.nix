@@ -1,4 +1,4 @@
-{ config, pkgs, stateVersion,... }:
+{ pkgs, stateVersion,... }:
 {
   # Define common packages to install
   environment.systemPackages = with pkgs; [
@@ -25,4 +25,6 @@
       experimental-features = nix-command flakes
     '';
   };
+  # Enable dconf
+  programs.dconf.enable = true;
 }
