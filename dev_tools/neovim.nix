@@ -20,6 +20,7 @@ in
       vim-fugitive
       nerdtree
     ];
+    withNodeJs = true;
     extraConfig = ''
       " open NERDTree automatically
         autocmd StdinReadPre * let s:std_in=1
