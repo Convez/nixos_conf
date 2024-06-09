@@ -13,6 +13,7 @@ in{
       };
       languages = {
         c =           mkEnDef "Enable Clang tooling" false;
+        cloud =       mkEnDef "Enable Cloud tooling" false;
         c_sharp =     mkEnDef "Enable C# tooling" false;
         go =          mkEnDef "Enable Go tooling" false;
         haskell =     mkEnDef "Enable Haskell tooling" false;

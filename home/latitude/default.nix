@@ -15,12 +15,13 @@ in
   convez.coding = {
     enable = true;
     ides = {
-      vim = true;
+      vim = false;
       code = true;
     };
     languages = {
       java = true;
       nix = true;
+      cloud = true;
     };
   };
 
@@ -37,11 +38,7 @@ in
   };
 
   # Define home packages to install
-  home.packages = (with pkgs; [
-    minikube
-    kubectl
-  ]) ++
-    languages.packages ++ 
+  home.packages = languages.packages ++ 
     gnome.packages;
   
   dconf.settings = lib.mergeAttrsList [

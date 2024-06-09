@@ -11,7 +11,7 @@ in
     jnoortheen.nix-ide
   ]);
 
-  codeSettings = lib.optionals convez.coding.languages.nix {
+  codeSettings = lib.optionalAttrs convez.coding.languages.nix {
     "nix.enableLanguageServer"= true;
     "nix.formatterPath"= "nixpkgs-fmt";
     "nix.serverPath"= "nixd";
