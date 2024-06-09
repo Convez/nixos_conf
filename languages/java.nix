@@ -13,4 +13,11 @@ in
 
   codeSettings = lib.optionalAttrs convez.coding.languages.java {
   };
+  
+  vimPlugins = lib.optionals convez.coding.languages.cloud(with pkgs.vimPlugins;[
+    coc-java
+  ]);
+  
+  vimSettings = ''
+  '';
 }

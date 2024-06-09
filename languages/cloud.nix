@@ -20,4 +20,12 @@ in
 
   codeSettings = lib.optionalAttrs convez.coding.languages.cloud {
   };
+
+  vimPlugins = lib.optionals convez.coding.languages.cloud(with pkgs.vimPlugins;[
+    coc-docker
+    vim-helm
+  ]);
+  
+  vimSettings = ''
+  '';
 }

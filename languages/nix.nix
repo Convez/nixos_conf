@@ -16,4 +16,11 @@ in
     "nix.formatterPath"= "nixpkgs-fmt";
     "nix.serverPath"= "nixd";
   };
+
+  vimPlugins = lib.optionals convez.coding.languages.cloud(with pkgs.vimPlugins;[
+      vim-nix
+  ]);
+  
+  vimSettings = ''
+  '';
 }

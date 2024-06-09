@@ -3,7 +3,7 @@
 let 
   settings = import ../../settings {inherit lib;};
   languages = import ../../languages {inherit config pkgs lib;};
-  dev_tools = import ../../dev_tools {inherit config pkgs languages;};
+  dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
   gnome = import ../../gnome {inherit config pkgs lib;};
 in 
 {
