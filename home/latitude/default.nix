@@ -15,7 +15,7 @@ in
   convez.coding = {
     enable = true;
     ides = {
-      vim = false;
+      vim = true;
       code = true;
     };
     languages = {

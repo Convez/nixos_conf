@@ -3,59 +3,59 @@ let
  cfg = config.convez.coding;
 in
 {
+  home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
   programs.neovim = {
     enable = cfg.ides.vim;
+    viAlias = true;
+    vimAlias = true;
+
     plugins = with pkgs.vimPlugins; [
+      vim-plug
       vim-nix
       coc-nvim
+      nerdtree
+      copilot-vim
       vim-airline
       vim-airline-themes
       vim-fugitive
-      vim-plug
       nerdtree
     ];
-
     extraConfig = ''
-      " Specify a directory for plugins
-      call plug#begin('~/.vim/plugged')
+      " open NERDTree automatically
+        autocmd StdinReadPre * let s:std_in=1
+        autocmd VimEnter * NERDTree
 
-      " List of plugins
-      Plug 'neoclide/coc.nvim', {'branch': 'release'}
-      Plug 'preservim/nerdtree'
-      Plug 'tpope/vim-fugitive'
-      Plug 'vim-airline/vim-airline'
-      Plug 'vim-airline/vim-airline-themes'
+        let g:NERDTreeGitStatusWithFlags = 1
+        "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+        "let g:NERDTreeGitStatusNodeColorization = 1
+        "let g:NERDTreeColorMapCustom = {
+            "\ "Staged"    : "#0ee375",  
+            "\ "Modified"  : "#d9bf91",  
+            "\ "Renamed"   : "#51C9FC",  
+            "\ "Untracked" : "#FCE77C",  
+            "\ "Unmerged"  : "#FC51E6",  
+            "\ "Dirty"     : "#FFBD61",  
+            "\ "Clean"     : "#87939A",   
+            "\ "Ignored"   : "#808080"   
+            "\ }                         
 
-      " Initialize plugin system
-      call plug#end()
 
-      " General settings
-      syntax on
-      set number
-      set relativenumber
+        let g:NERDTreeIgnore = ['^node_modules$']
 
-      " Airline configuration
-      let g:airline#extensions#tabline#enabled = 1
-      let g:airline#extensions#tabline#fnamemod = ':t'
-      let g:airline#extensions#tabline#buffer_nr_show = 1
-      let g:airline_powerline_fonts = 1
+        " CoC configuration
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gr <Plug>(coc-references)
 
-      " NERDTree configuration
-      map <C-n> :NERDTreeToggle<CR>
-      let NERDTreeShowHidden=1
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+        nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 
-      " CoC (Conqueror of Completion) configuration
-      let g:coc_global_extensions = ['coc-json', 'coc-pyright', 'coc-tsserver']
+        nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 
-      " Key mappings for CoC
-      inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-      inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-      nnoremap <silent> gd <Plug>(coc-definition)
-      nnoremap <silent> gr <Plug>(coc-references)
+        nmap <leader>do <Plug>(coc-codeaction)
 
-      " Auto commands for file types
-      autocmd FileType python setlocal shiftwidth=4 tabstop=4
-      autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+        nmap <leader>rn <Plug>(coc-rename)
     '';
   };
 }
