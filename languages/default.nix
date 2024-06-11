@@ -7,7 +7,7 @@ let
 in 
 {
 
-  packages = nixConf.packages ++ 
+  packages = [pkgs.meslo-lgs-nf pkgs.grc] ++ nixConf.packages ++ 
     cloudConf.packages ++
     javaConf.packages ++
     tsConf.packages

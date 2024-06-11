@@ -6,12 +6,14 @@ let
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs;};
   gnome = import ../../gnome {inherit config pkgs lib;};
+  shellConf = import ../shell {inherit config pkgs;};
 in 
 {
   imports = [
     settings
     dev_tools
     languagePrograms
+    shellConf
   ];
 
   convez.coding = {

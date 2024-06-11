@@ -1,8 +1,13 @@
 # ~/nixos-config/hosts/wsl.nix
-{ config, ... }:
+{ config, pkgs, ... }:
+let 
+  common = import ../modules/common.nix;
+  users = import ../modules/users.nix {inherit pkgs;};
+in
 {
   imports = [
-    ../modules/common.nix
+    common
+    users
   ];
 
   systemd.services.docker-sock = {

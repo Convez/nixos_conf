@@ -1,11 +1,10 @@
-{ pkgs, stateVersion,... }:
+{ pkgs, ... }:
 {
   # Define common packages to install
   environment.systemPackages = with pkgs; [
     wget
     curl
   ];
-  system.stateVersion = stateVersion;
   # Set your time zone.
   time.timeZone = "Europe/Rome";
 

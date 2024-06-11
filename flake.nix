@@ -23,6 +23,7 @@
           inherit system stateVersion user;
           hostname = "latitude";
         };
+        system.stateVersion = stateVersion;
         modules = [
           ./modules/efi.nix
           ./hosts/physical.nix
@@ -35,7 +36,7 @@
         modules = [
           nixos-wsl.nixosModules.default {
             networking.hostName = "wsl";
-            system.stateVersion = "${stateVersion}";
+            system.stateVersion = stateVersion;
             wsl.enable = true;
             wsl.defaultUser = "${user}";
             wsl.docker-desktop.enable = true;

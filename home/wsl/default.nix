@@ -4,6 +4,7 @@ let
   languages = import ../../languages {inherit config pkgs lib;};
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs;};
+  shellConf = import ../shell {inherit config pkgs;};
 
 in
 {
@@ -24,6 +25,7 @@ in
     settings
     dev_tools
     languagePrograms
+    shellConf
   ];
 
   # Home manager user settings

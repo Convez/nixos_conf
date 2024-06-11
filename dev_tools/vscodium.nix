@@ -8,6 +8,9 @@ in
     enable = cfg.ides.code;
     mutableExtensionsDir=true;
     extensions = languages.codeExtensions;
-    userSettings = languages.codeSettings;
+    userSettings = {
+      "editor.fontFamily"= "MesloLGS NF Regular";
+    } //
+    languages.codeSettings;
   };
 }
