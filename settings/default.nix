@@ -18,11 +18,10 @@ in{
         go =          mkEnDef "Enable Go tooling" false;
         haskell =     mkEnDef "Enable Haskell tooling" false;
         java =        mkEnDef "Enable Java tooling" false;
-        javascript =  mkEnDef "Enable Javascript tooling" false;
+        typescript =  mkEnDef "Enable Typescript tooling" false;
         json =        mkEnDef "Enable JSON tooling" false;
         kotlin =      mkEnDef "Enable Kotlin tooling" false;
         lua =         mkEnDef "Enable LUA tooling" false;
-        misc =        mkEnDef "Enable other stuff (git, docker, ...)" false;
         nix =         mkEnDef "Enable Nix tooling" false;
         purescript =  mkEnDef "Enable Purescript tooling" false;
         racket =      mkEnDef "Enable racket tooling" false;

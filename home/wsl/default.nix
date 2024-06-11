@@ -2,14 +2,12 @@
 let
   settings = import ../../settings {inherit lib;};
   languages = import ../../languages {inherit config pkgs lib;};
-  dev_tools = import ../../dev_tools {inherit config pkgs languages;};
+  dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
+  languagePrograms = import ../../languages/programs.nix {inherit config pkgs;};
+
 in
 {
-  imports = [
-    settings
-    dev_tools
-  ];
-  
+
   convez.coding = {
     enable = true;
     ides = {
@@ -18,8 +16,15 @@ in
     languages = {
       java = true;
       nix = true;
+      cloud = true;
+      typescript = true;
     };
   };
+  imports = [
+    settings
+    dev_tools
+    languagePrograms
+  ];
 
   # Home manager user settings
   home.username = "${user}";

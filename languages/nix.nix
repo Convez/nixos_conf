@@ -17,7 +17,7 @@ in
     "nix.serverPath"= "nixd";
   };
 
-  vimPlugins = lib.optionals convez.coding.languages.cloud(with pkgs.vimPlugins;[
+  vimPlugins = lib.optionals convez.coding.languages.nix(with pkgs.vimPlugins;[
       vim-nix
   ]);
   

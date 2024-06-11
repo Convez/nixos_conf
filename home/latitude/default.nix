@@ -4,12 +4,14 @@ let
   settings = import ../../settings {inherit lib;};
   languages = import ../../languages {inherit config pkgs lib;};
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
+  languagePrograms = import ../../languages/programs.nix {inherit config pkgs;};
   gnome = import ../../gnome {inherit config pkgs lib;};
 in 
 {
   imports = [
     settings
     dev_tools
+    languagePrograms
   ];
 
   convez.coding = {
@@ -22,6 +24,7 @@ in
       java = true;
       nix = true;
       cloud = true;
+      typescript = true;
     };
   };
 
