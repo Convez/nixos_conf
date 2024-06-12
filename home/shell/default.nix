@@ -14,6 +14,7 @@ in {
       bindkey '^H' backward-kill-word
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word
+      export JAVA_HOME="${config.convez.coding.languages.java.version}/lib/openjdk";
     '';
 
     shellAliases = {

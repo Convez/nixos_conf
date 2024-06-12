@@ -19,6 +19,7 @@ in
     azure-cli
     kubernetes-helm
     terraform
+    buildpack
   ]);
 
   codeExtensions = lib.optionals convez.coding.languages.cloud (with pkgs.vscode-extensions;[
