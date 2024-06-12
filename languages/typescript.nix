@@ -9,6 +9,7 @@ in
     nodejs
   ]);
   codeExtensions = lib.optionals convez.coding.languages.typescript (with pkgs.vscode-extensions;[
+    Angular.ng-template
   ]);
 
   codeSettings = lib.optionalAttrs convez.coding.languages.typescript {
