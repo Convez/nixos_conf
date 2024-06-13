@@ -1,8 +1,7 @@
-{config, pkgs, ... }:
+{config, ... }:
 let
   convez = config.convez;
   mavenSettingsFile = ./maven_conf/${convez.coding.maven.settings}.settings.xml;
-  settingsContent = builtins.readFile mavenSettingsFile;
 in 
 {
   programs.java = {
