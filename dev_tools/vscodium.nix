@@ -9,8 +9,10 @@ in
     mutableExtensionsDir=true;
     extensions = languages.codeExtensions;
     userSettings = {
-      "editor.fontFamily"= "MesloLGS NF Regular";
+      "editor.fontFamily"= "MesloLGS NF";
       "terminal.integrated.persistentSessionReviveProcess"= "never";
+      "terminal.integrated.defaultProfile.linux"= "zsh";
+      "terminal.integrated.fontFamily"="MesloLGS NF";
     } //
     languages.codeSettings;
   };

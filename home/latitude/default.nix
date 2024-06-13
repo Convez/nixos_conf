@@ -1,10 +1,10 @@
 { config, pkgs, lib, stateVersion, user, ... }:
 
 let 
-  settings = import ../../settings {inherit lib;};
+  settings = import ../../settings {inherit pkgs lib;};
   languages = import ../../languages {inherit config pkgs lib;};
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
-  languagePrograms = import ../../languages/programs.nix {inherit config pkgs;};
+  languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
   gnome = import ../../gnome {inherit config pkgs lib;};
   shellConf = import ../shell {inherit config pkgs;};
 in 
@@ -23,10 +23,14 @@ in
       code = true;
     };
     languages = {
-      java = true;
+      java = {
+        enable = true;
+        version = pkgs.jdk17;
+      };
       nix = true;
       cloud = true;
       typescript = true;
+      rust = true;
     };
   };
 

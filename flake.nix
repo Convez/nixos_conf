@@ -34,7 +34,7 @@
           inherit system stateVersion user;
           hostname = "latitude";
         };
-        system.stateVersion = stateVersion;
+        system.stateVersion = "${stateVersion}";
         modules = [
           ./modules/efi.nix
           ./hosts/physical.nix

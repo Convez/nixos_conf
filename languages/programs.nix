@@ -1,4 +1,4 @@
-{config, ... }:
+{config, pkgs, lib, ... }:
 let
   convez = config.convez;
   mavenSettingsFile = ./maven_conf/${convez.coding.maven.settings}.settings.xml;

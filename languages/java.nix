@@ -11,7 +11,7 @@ in
   ]);
   codeExtensions = lib.optionals enableJava (with pkgs.vscode-extensions;[
     vscjava.vscode-java-pack
-    redhat.fabric8-analytics
+    redhat.java
   ]);
 
   codeSettings = lib.optionalAttrs enableJava {
