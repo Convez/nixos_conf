@@ -1,10 +1,10 @@
-name: "Build NixOs WSL installation ISO"
-run-name: "Build NixOs WSL installation ISo"
+name: "Build NixOs installation ISO"
+run-name: "Build NixOs installation ISo"
 on:
   workflow_dispatch:
 
 jobs:
-  build-tarball:
+  build-iso:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
