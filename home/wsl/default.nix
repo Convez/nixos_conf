@@ -22,6 +22,9 @@ in
       nix = true;
       cloud = true;
       typescript = true;
+      rust = true;
+      c = true;
+      c_sharp = true;
     };
     maven.settings = "af";
   };
