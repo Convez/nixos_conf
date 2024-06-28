@@ -5,7 +5,7 @@ let
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
   shellConf = import ../shell {inherit config pkgs;};
-
+  zscalerCert = "af.zscaler.crt";
 in
 {
 
@@ -48,6 +48,8 @@ in
   };
 
   # Define home packages to install
-  home.packages = languages.packages;
-
+  home.packages = (with pkgs;[
+    retroarchFull
+  ]) ++ languages.packages;
+  home.file.".minikube/certs/zscaler.cert".source = ../../hosts/certificates/${zscalerCert};
 }
