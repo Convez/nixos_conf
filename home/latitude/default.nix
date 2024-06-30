@@ -47,7 +47,10 @@ in
   };
 
   # Define home packages to install
-  home.packages = languages.packages ++ 
+  home.packages = (with pkgs;[
+      retroarchFull
+    ]) ++ 
+    languages.packages ++ 
     gnome.packages;
   
   dconf.settings = lib.mergeAttrsList [
