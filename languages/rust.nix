@@ -5,8 +5,10 @@ in
 {
 
   packages = lib.optionals convez.coding.languages.rust (with pkgs;[
-    cargo
+    rust-analyzer
     rustc
+    cargo
+    rustPackages.rustPlatform.rustcSrc
   ]);
   codeExtensions = lib.optionals convez.coding.languages.rust (with pkgs.vscode-extensions;[
     rust-lang.rust-analyzer
@@ -17,7 +19,6 @@ in
   
   vimPlugins = lib.optionals convez.coding.languages.rust(with pkgs.vimPlugins;[
     coc-rust-analyzer
-    coc-rls
   ]);
   
   vimSettings = ''

@@ -16,6 +16,7 @@ in {
       bindkey "^[[1;5D" backward-word
       export JAVA_HOME="${config.convez.coding.languages.java.version}/lib/openjdk";
       source ${pkgs.azure-cli}/share/zsh/site-functions/_az;
+      export RUST_SRC_PATH="${pkgs.rustPackages.rustPlatform.rustcSrc}";
     '';
 
     shellAliases = {
