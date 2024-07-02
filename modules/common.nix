@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
+    openssl
+    powershell
   ];
   # Set your time zone.
   time.timeZone = "Europe/Rome";

@@ -4,7 +4,7 @@ in {
   
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
+    enableCompletion = false;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     
@@ -32,6 +32,7 @@ in {
       enable = true;
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+        { name = "marlonrichert/zsh-autocomplete";}
         { name = "zsh-users/zsh-completions";}
         { name = "zsh-users/zsh-syntax-highlighting";}
         { name = "zsh-users/zsh-history-substring-search";}
