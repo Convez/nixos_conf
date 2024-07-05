@@ -49,7 +49,7 @@ in
 
   # Define home packages to install
   home.packages = (with pkgs;[
-    retroarchFull
+    # retroarchFull
   ]) ++ languages.packages;
   home.file.".minikube/certs/zscaler.cert".source = ../../hosts/certificates/${zscalerCert};
 }
