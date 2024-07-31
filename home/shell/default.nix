@@ -5,7 +5,7 @@ in {
   programs.zsh = {
     enable = true;
     enableCompletion = false;
-    autosuggestion.enable = true;
+    autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
     
     initExtra = ''
@@ -14,9 +14,11 @@ in {
       bindkey '^H' backward-kill-word
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word
+      bindkey              '^I'         menu-complete
+      bindkey "$terminfo[kcbt]" reverse-menu-complete
       export JAVA_HOME="${config.convez.coding.languages.java.version}/lib/openjdk";
       source ${pkgs.azure-cli}/share/zsh/site-functions/_az;
-      export RUST_SRC_PATH="${pkgs.rustPackages.rustPlatform.rustcSrc}";
+      export RUST_SRC_PATH="${pkgs.rustPackages.rustPlatform.rustcSrc}/library";
     '';
 
     shellAliases = {
@@ -31,9 +33,7 @@ in {
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
         { name = "marlonrichert/zsh-autocomplete";}
-        { name = "zsh-users/zsh-completions";}
         { name = "zsh-users/zsh-syntax-highlighting";}
         { name = "zsh-users/zsh-history-substring-search";}
         { name = "romkatv/powerlevel10k"; tags = [ "as:theme" "depth:1" ]; } # Installations with additional options. For the list of options, please refer to Zplug README.

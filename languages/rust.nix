@@ -9,6 +9,7 @@ in
     rustc
     cargo
     rustPackages.rustPlatform.rustcSrc
+    rustc.llvmPackages.llvm
   ]);
   codeExtensions = lib.optionals convez.coding.languages.rust (with pkgs.vscode-extensions;[
     rust-lang.rust-analyzer
