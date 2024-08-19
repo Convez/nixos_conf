@@ -6,11 +6,11 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager.url = "github:nix-community/home-manager";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
   };
   
-
   
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-server, ... }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager,vscode-remote-workaround, vscode-server, ... }:
   let 
     system = "x86_64-linux";
     stateVersion = "24.05";
@@ -56,6 +56,10 @@
           ({ config, pkgs, ... }: {
             services.vscode-server.enable = true;
           })
+          vscode-remote-workaround.nixosModules.default {
+            vscode-remote-workaround.enable = true;
+          }
+
           ./hosts/wsl.nix
         ];
       };

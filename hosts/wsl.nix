@@ -9,6 +9,10 @@ in
     common
     users
   ];
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
 
   systemd.services.docker-sock = {
       description = "Docker Desktop socket link";
@@ -26,5 +30,4 @@ in
     "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" 
     "${./certificates/af.zscaler.crt}"  
   ];
-
 }

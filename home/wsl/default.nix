@@ -23,8 +23,8 @@ in
       cloud = true;
       typescript = true;
       rust = true;
-      c = true;
-      c_sharp = true;
+      c = false;
+      c_sharp = false;
     };
     maven.settings = "af";
   };
