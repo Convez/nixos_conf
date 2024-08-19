@@ -10,6 +10,9 @@ in
     cargo
     rustPackages.rustPlatform.rustcSrc
     rustc.llvmPackages.llvm
+    pkg-config
+    openssl.dev
+    libpqxx_6
   ]);
   codeExtensions = lib.optionals convez.coding.languages.rust (with pkgs.vscode-extensions;[
     rust-lang.rust-analyzer
