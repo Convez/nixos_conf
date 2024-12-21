@@ -12,7 +12,7 @@ in
     rustc.llvmPackages.llvm
     pkg-config
     openssl.dev
-    libpqxx_6
+    libpqxx
   ]);
   codeExtensions = lib.optionals convez.coding.languages.rust (with pkgs.vscode-extensions;[
     rust-lang.rust-analyzer

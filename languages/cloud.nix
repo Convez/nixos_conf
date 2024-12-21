@@ -19,6 +19,7 @@ in
     k9s
     azure-cli
     kubernetes-helm
+    helmfile
     terraform
     buildpack
   ]);

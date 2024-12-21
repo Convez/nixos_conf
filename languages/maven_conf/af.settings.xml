@@ -275,7 +275,7 @@ under the License.
                     </snapshots>
                     <releases>
                         <enabled>true</enabled>
-                        <updatePolicy>never</updatePolicy>
+                        <updatePolicy>always</updatePolicy>
                         <checksumPolicy>warn</checksumPolicy>
                     </releases>
                 </repository>
@@ -306,7 +306,7 @@ under the License.
                     </snapshots>
                     <releases>
                         <enabled>true</enabled>
-                        <updatePolicy>never</updatePolicy>
+                        <updatePolicy>always</updatePolicy>
                         <checksumPolicy>warn</checksumPolicy>
                     </releases>
                 </pluginRepository>
