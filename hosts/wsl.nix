@@ -11,7 +11,6 @@ in
   ];
   programs.nix-ld = {
     enable = true;
-    package = pkgs.nix-ld-rs;
   };
 
   systemd.services.docker-sock = {

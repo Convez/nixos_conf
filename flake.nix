@@ -56,10 +56,6 @@
           ({ config, pkgs, ... }: {
             services.vscode-server.enable = true;
           })
-          vscode-remote-workaround.nixosModules.default {
-            vscode-remote-workaround.enable = true;
-          }
-
           ./hosts/wsl.nix
         ];
       };
