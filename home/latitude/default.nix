@@ -6,7 +6,7 @@ let
   dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
   gnome = import ../../gnome {inherit config pkgs lib;};
-  kde = import ../../kde {inherit config pkgs lib;};
+  kde = import ../../kde {inherit pkgs;};
   shellConf = import ../shell {inherit config pkgs;};
 in 
 {
@@ -15,6 +15,7 @@ in
     dev_tools
     languagePrograms
     shellConf
+    kde
   ];
 
   convez.coding = {
@@ -49,18 +50,11 @@ in
 
   # Define home packages to install
   home.packages = (with pkgs;[
-      retroarchFull
     ]) ++ 
     languages.packages ++ 
-    gnome.packages ++
-    kde.packages;
+    gnome.packages;
   
   dconf.settings = lib.mergeAttrsList [
     gnome.dconf
   ];
-  qt = {
-    enable = true;
-    platformTheme.name = kde.platformTheme;
-    style.name = kde.styleName;
-  };
 }

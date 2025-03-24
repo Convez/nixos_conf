@@ -7,10 +7,15 @@
     home-manager.url = "github:nix-community/home-manager";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
   
   
-  outputs = { self, nixpkgs, nixos-wsl, home-manager,vscode-remote-workaround, vscode-server, ... }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, vscode-remote-workaround, vscode-server, plasma-manager, ... }:
   let 
     system = "x86_64-linux";
     stateVersion = "24.05";
@@ -68,6 +73,7 @@
           inherit system stateVersion user;
         };
         modules = [
+          plasma-manager.homeManagerModules.plasma-manager
           ./home/latitude
         ];
       };
