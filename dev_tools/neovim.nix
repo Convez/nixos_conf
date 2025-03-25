@@ -58,7 +58,7 @@ let
       nnoremap <M-Left> :bp<cr>
       nnoremap <c-x> :bp \|bd #<cr>
   '';
-
+  inherit (lib) mkOutOfStoreSymlink;
 in
 {
   home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
@@ -66,24 +66,23 @@ in
     enable = cfg.ides.vim;
     viAlias = true;
     vimAlias = true;
-
-    plugins = (with pkgs.vimPlugins; [
-      vim-plug
-      coc-nvim
-      nerdtree
-      copilot-vim # Don´t forget to run :Copilot setup
-      vim-airline
-      vim-airline-themes
-      vim-fugitive
-      nerdtree
-    ]) ++ 
-    languages.vimPlugins
-    ;
-    withNodeJs = true;
-    extraConfig = lib.strings.concatStringsSep "\n" [
-      baseConfig
-      languages.vimSettings
-    ];
-    
+    # plugins = (with pkgs.vimPlugins; [
+    #   vim-plug
+    #   coc-nvim
+    #   nerdtree
+    #   copilot-vim # Don´t forget to run :Copilot setup
+    #   vim-airline
+    #   vim-airline-themes
+    #   vim-fugitive
+    #   nerdtree
+    # ]) ++ 
+    # languages.vimPlugins
+    # ;
+    # withNodeJs = true;
+    # extraConfig = lib.strings.concatStringsSep "\n" [
+    #   baseConfig
+    #   languages.vimSettings
+    # ];
   };
+  
 }
