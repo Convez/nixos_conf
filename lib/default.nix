@@ -1,6 +1,8 @@
-{lib,...}:
+{nixpkgs, nixunstable, nixmaster, home-manager, ...}:
 let
-  inherit (lib) mkOption types;
+  inherit (nixpkgs) mkOption types;
+  mkOsDef = import ./mkOs.nix {inherit nixpkgs;};
+  mkArchDef = import ./mkArch.nix {inherit nixpkgs nixunstable nixmaster home-manager;};
 in
 {
   mkEnDef = description: default: mkOption{
@@ -18,4 +20,6 @@ in
     type = types.package;
     example = "pkgs.jdk";
   };
+  mkOs = mkOsDef;
+  mkArch = mkArchDef;
 }

@@ -12,7 +12,8 @@ in
   programs.nix-ld = {
     enable = true;
   };
-
+  wsl.enable = true;
+  wsl.defaultUser = "convez";
   systemd.services.docker-sock = {
       description = "Docker Desktop socket link";
       script = ''

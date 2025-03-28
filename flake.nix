@@ -32,24 +32,11 @@
     supportedArchitectures = ["x86_64-linux"];
     stateVersion = "25.05";
     user = "convez";
-    # Here I configure the nixpkgs for a given system (system=architecture)
-    # This allows easy evolution in case I need to add support for ARM or Darwin (grz Massi)
-    pkgConf = system: rec{
-      inherit system;
-      # This is equivalent to nixpgks.config
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = (_: true);
-      };
-      # Easy access to the nixpkg channels
-      stable = import nixpkgs { inherit system config; };
-      unstable = import nixunstable { inherit system config; };
-      master = import nixmaster { inherit system config; };
-
-      # Use project library functions
-      helper = import ./lib.nix { inherit stable; };
+    helper = import ./lib {
+      inherit nixpkgs nixunstable nixmaster home-manager;
     };
-    linuxConf = with pkgConf "x86_64-linux"; {
+
+    linuxConf = with helper.mkArch (builtins.elemAt supportedArchitectures 0); {
       nixosConfigurations = {
         installationIso = nixpkgs.lib.nixosSystem {
           system = "${system}";
@@ -75,21 +62,13 @@
           ];
         };
 
-        wsl = nixpkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            nixos-wsl.nixosModules.default {
-              networking.hostName = "wsl";
-              system.stateVersion = stateVersion;
-              wsl.enable = true;
-              wsl.defaultUser = "${user}";
-              wsl.docker-desktop.enable = true;
-            }
+        wsl = helper.mkOs {
+          hostName = "wsl";
+          inherit stable system stateVersion user;
+          pkgs = stable;
+          useModules = [
+            nixos-wsl.nixosModules.default
             vscode-server.nixosModules.default
-            ({ config, pkgs, ... }: {
-              services.vscode-server.enable = true;
-            })
-            ./hosts/wsl.nix
           ];
         };
       };
