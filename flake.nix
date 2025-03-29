@@ -49,18 +49,27 @@
             ./hosts/physical.nix
           ];
         };
-        latitude = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system stateVersion user;
-            hostname = "latitude";
-          };
-          system.stateVersion = "${stateVersion}";
-          modules = [
-            ./modules/efi.nix
-            ./hosts/physical.nix
-            ./hosts/latitude/hardware-configuration.nix
-          ];
-        };
+	
+        latitude = helper.mkOs {
+          hostName = "latitude";
+          inherit stable system stateVersion user;
+          pkgs = stable;
+        }; 
+		  
+
+        # latitude = nixpkgs.lib.nixosSystem {
+
+        #   specialArgs = {
+        #     inherit system stateVersion user;
+        #     hostname = "latitude";
+        #   };
+        #   system.stateVersion = "${stateVersion}";
+        #   modules = [
+        #     ./modules/efi.nix
+        #     ./hosts/physical.nix
+        #     ./hosts/latitude/hardware-configuration.nix
+        #   ];
+        # };
 
         wsl = helper.mkOs {
           hostName = "wsl";
