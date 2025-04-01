@@ -1,12 +1,12 @@
-{ pkgs, stateVersion, ... }:
+{ pkgs, lib, stateVersion, ... }:
 let 
-  physical = import ./physical.nix;
-  users = import ../modules/users.nix {inherit pkgs;};
+  physical = import ./physical.nix {inherit pkgs lib; };
 in
 {
   system.stateVersion=stateVersion;
   imports = [
     physical
-    users
+    ./latitude/hardware-configuration.nix
+    ../modules/efi.nix
   ];
 }
