@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, stateVersion, ... }:
 {
   # Define common packages to install
   environment.systemPackages = with pkgs; [
@@ -9,7 +9,7 @@
   ];
   # Set your time zone.
   time.timeZone = "Europe/Rome";
-
+  system.stateVersion = stateVersion;
   # Install firefox.
   programs.firefox.enable = true;
 

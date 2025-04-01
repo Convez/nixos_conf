@@ -32,7 +32,7 @@
     supportedArchitectures = ["x86_64-linux"];
     stateVersion = "25.05";
     user = "convez";
-    helper = import ./lib {
+    helper = import ./lib/sys {
       inherit nixpkgs nixunstable nixmaster home-manager;
     };
 
@@ -95,7 +95,7 @@
         "convez@wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {
-            inherit system stateVersion user;
+            inherit stable system stateVersion user;
           };
           modules = [
             ./home/wsl

@@ -1,7 +1,7 @@
 {pkgs, lib, ...}:
 
 let
-  tools = import ../lib {inherit lib;};
+  tools = import ../lib/opt {inherit lib;};
   inherit (tools) mkEnDef mkEnStrDef mkEnPkgDef;
 in{
   options.convez = {
