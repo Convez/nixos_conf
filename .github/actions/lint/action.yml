@@ -3,6 +3,6 @@ runs:
     steps:
         - uses: ./.github/actions/install-nix
         - shell: bash
-          run: statix check
+          run: nix-shell -p statix --run "statix check"
         - shell: bash
-          run: deadnix check .
+          run: nix-shell -p deadnix --run "deadnix check ."
