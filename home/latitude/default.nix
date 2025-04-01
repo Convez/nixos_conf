@@ -41,7 +41,6 @@ in
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "${stateVersion}";
-    programs.home-manager.enable = true;
   };
   # Allow unfree packages
   nixpkgs.config = {
