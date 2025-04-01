@@ -1,6 +1,7 @@
 name: "Lint Nix config"
 run-name: "Lint Nix config"
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
