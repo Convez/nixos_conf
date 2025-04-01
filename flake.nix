@@ -27,7 +27,7 @@
   };
   
   
-  outputs = { self, nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager, nix-direnv, vscode-remote-workaround, vscode-server, plasma-manager, ... }:
+  outputs = { nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager, nix-direnv, vscode-server, plasma-manager, ... }:
   let 
     supportedArchitectures = ["x86_64-linux"];
     stateVersion = "25.05";
@@ -37,7 +37,13 @@
     };
 
     linuxConf = with helper.mkArch (builtins.elemAt supportedArchitectures 0); {
-      nixosConfigurations = {
+        nixosConfigurations = {
+          iso = helper.mkIso {
+            inherit stable system stateVersion user;
+            pkgs = stable;
+          }; 
+		  
+/* nixosConfigurations = {
         installationIso = nixpkgs.lib.nixosSystem {
           system = "${system}";
           specialArgs = {
@@ -48,7 +54,7 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
             ./hosts/physical.nix
           ];
-        };
+        }; */
 	
         latitude = helper.mkOs {
           hostName = "latitude";
@@ -56,21 +62,6 @@
           pkgs = stable;
         }; 
 		  
-
-        # latitude = nixpkgs.lib.nixosSystem {
-
-        #   specialArgs = {
-        #     inherit system stateVersion user;
-        #     hostname = "latitude";
-        #   };
-        #   system.stateVersion = "${stateVersion}";
-        #   modules = [
-        #     ./modules/efi.nix
-        #     ./hosts/physical.nix
-        #     ./hosts/latitude/hardware-configuration.nix
-        #   ];
-        # };
-
         wsl = helper.mkOs {
           hostName = "wsl";
           inherit stable system stateVersion user;
@@ -103,11 +94,12 @@
         };
       };
     };
+
   in
     linuxConf //
     {
-      homeConfigurations = linuxConf.homeConfigurations;
-    } 
-  ;
+      inherit (linuxConf) homeConfigurations;
+    }; 
+} 
   
-}
+

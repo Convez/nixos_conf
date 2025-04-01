@@ -15,7 +15,7 @@ jobs:
       shell: bash
       id: build
       run: |
-        nix build .#nixosConfigurations.installationIso.config.system.build.isoImage 
+        nix build .#nixosConfigurations.iso.config.system.build.isoImage 
 
     - name: Archive NixOs installation ISO
       uses: actions/upload-artifact@v4

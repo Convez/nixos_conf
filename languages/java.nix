@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  convez = config.convez;
+  inherit (config) convez;
   enableJava = convez.coding.languages.java.enable;
   javaVersion = convez.coding.languages.java.version;
 in

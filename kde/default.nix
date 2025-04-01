@@ -1,6 +1,5 @@
 {pkgs, ...}:
-let 
-in {
+{
   programs.plasma = {
     enable = true;
 

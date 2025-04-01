@@ -5,4 +5,4 @@ runs:
         - shell: bash
           run: statix check
         - shell: bash
-          run: deadnix check
+          run: deadnix check .

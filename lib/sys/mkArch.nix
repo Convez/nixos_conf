@@ -4,7 +4,7 @@ system: rec{
   # This is equivalent to nixpgks.config
   config = {
     allowUnfree = true;
-    allowUnfreePredicate = (_: true);
+    allowUnfreePredicate = _: true;
   };
   # Easy access to the nixpkg channels
   stable = import nixpkgs { inherit system config; };

@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  convez = config.convez;
+  inherit (config) convez;
   vim-hashicorp-tools = pkgs.vimUtils.buildVimPlugin {
     name = "vim-hashicorp-tools";
     src = pkgs.fetchFromGitHub {

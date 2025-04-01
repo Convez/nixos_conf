@@ -1,7 +1,13 @@
 name: "Lint Nix config"
 run-name: "Lint Nix config"
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - .github/**
+      - .gitignore
+      - README.md
 
 jobs:
   lint:

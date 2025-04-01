@@ -1,4 +1,4 @@
-{ config, pkgs, stateVersion, hostName ,... }:
+{ pkgs, stateVersion, ... }:
 let 
   physical = import ./physical.nix;
   users = import ../modules/users.nix {inherit pkgs;};

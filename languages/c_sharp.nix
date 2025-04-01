@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  convez = config.convez;
+  inherit (config) convez;
 in
 {
   packages = lib.optionals convez.coding.languages.c_sharp (with pkgs;[

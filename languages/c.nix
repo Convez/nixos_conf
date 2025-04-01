@@ -1,6 +1,6 @@
 {config, pkgs, lib, ...}:
 let 
-  convez = config.convez;
+  inherit (config) convez;
   enableC = convez.coding.languages.c;
 in{
   packages = lib.optionals enableC (with pkgs;[

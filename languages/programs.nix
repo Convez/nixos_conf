@@ -1,12 +1,11 @@
-{config, pkgs, lib, ... }:
+{config, ... }:
 let
-  convez = config.convez;
+  inherit (config) convez;
   mavenSettingsFile = ./maven_conf/${convez.coding.maven.settings}.settings.xml;
 in 
 {
   programs.java = {
-    enable = convez.coding.languages.java.enable;
-    package = convez.coding.languages.java.version;
+    inherit (convez.coding.languages.java) enable version;
   };
   home.file.".m2/settings.xml".source = mavenSettingsFile;
 }

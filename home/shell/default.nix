@@ -1,6 +1,5 @@
 {config, pkgs,...}:
-let 
-in {
+{
   
   programs.zsh = {
     enable = true;
