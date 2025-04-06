@@ -7,7 +7,7 @@ let
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
   gnome = import ../../gnome {inherit config pkgs lib;};
   kde = import ../../kde {inherit pkgs;};
-  awesome = import ../../awesome {inherit config;};
+  awesome = import ../../awesome {inherit config lib;};
   shellConf = import ../shell {inherit config pkgs;};
 in 
 {
