@@ -7,6 +7,7 @@ let
   languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
   gnome = import ../../gnome {inherit config pkgs lib;};
   kde = import ../../kde {inherit pkgs;};
+  awesome = import ../../awesome {inherit config;};
   shellConf = import ../shell {inherit config pkgs;};
 in 
 {
@@ -15,7 +16,7 @@ in
     dev_tools
     languagePrograms
     shellConf
-    kde
+    awesome
   ];
 
   convez.coding = {
@@ -47,7 +48,7 @@ in
       allowUnfree = true;
       allowUnfreePredicate = _: true;
   };
-
+  programs.home-manager.enable = true;
   # Define home packages to install
   home.packages = (with pkgs;[
     ]) ++ 
