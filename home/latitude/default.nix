@@ -43,6 +43,10 @@ in
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "${stateVersion}";
+    sessionVariables = {
+      TERM = "alacritty";
+      EDITOR = "nvim";
+    };
   };
   # Allow unfree packages
   # TODO: Should this be here? Wasn´t this already configured at system level?
@@ -56,6 +60,7 @@ in
   # TODO: Language stuff should not be installed globally. 
   # Devenv should be used in conjunction with flakes to automatically switch to useful shells
   home.packages = (with pkgs;[
+      alacritty
     ]) ++ 
     languages.packages; 
   #   gnome.packages;

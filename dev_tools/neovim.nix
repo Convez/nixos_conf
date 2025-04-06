@@ -61,7 +61,7 @@ let
   inherit (lib) mkOutOfStoreSymlink;
 in
 {
-  home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
+  # home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
   programs.neovim = {
     enable = cfg.ides.vim;
     viAlias = true;

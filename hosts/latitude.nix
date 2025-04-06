@@ -9,4 +9,7 @@ in
     ./latitude/hardware-configuration.nix
     ../modules/efi.nix
   ];
+  environment.variables = {
+    TERM = "alacritty";
+  };
 }
