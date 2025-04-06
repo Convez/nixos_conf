@@ -38,24 +38,29 @@ in
   };
 
   # Home manager user settings
+  # TODO: Maybe move this to common user config?
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "${stateVersion}";
   };
   # Allow unfree packages
+  # TODO: Should this be here? Wasn´t this already configured at system level?
   nixpkgs.config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
   };
   programs.home-manager.enable = true;
   # Define home packages to install
+  # TODO: Move gnome stuff to gnome config
+  # TODO: Language stuff should not be installed globally. 
+  # Devenv should be used in conjunction with flakes to automatically switch to useful shells
   home.packages = (with pkgs;[
     ]) ++ 
-    languages.packages ++ 
-    gnome.packages;
+    languages.packages; 
+  #   gnome.packages;
   
-  dconf.settings = lib.mergeAttrsList [
-    gnome.dconf
-  ];
+  # dconf.settings = lib.mergeAttrsList [
+  #   gnome.dconf
+  # ];
 }
