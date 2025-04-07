@@ -42,23 +42,10 @@
             inherit stable system stateVersion user;
             pkgs = stable;
           }; 
-		  
-/* nixosConfigurations = {
-        installationIso = nixpkgs.lib.nixosSystem {
-          system = "${system}";
-          specialArgs = {
-            inherit system stateVersion user;
-            hostname = "nixos_cd";
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-            ./hosts/physical.nix
-          ];
-        }; */
 	
         latitude = helper.mkOs {
           hostName = "latitude";
-          inherit stable system stateVersion user;
+          inherit stable system stateVersion user; 
           pkgs = stable;
         }; 
 		  

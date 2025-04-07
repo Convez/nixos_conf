@@ -1,5 +1,10 @@
 { pkgs, ... }:
+let 
+  opt = import ../lib/opt;
+  inherit (opt) mkEnDef mkEnStrDef mkEnPkgDef;
+in
 {
+
   # Enable the X11 windowing system.
   services = {
     xserver={
