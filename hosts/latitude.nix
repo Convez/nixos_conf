@@ -4,10 +4,20 @@ let
   bootloader = import ../modules/bootloader;
 in
 {
-  myConf.bootloader = {
-    enable = true;
-    efi.enable = true;
+
+  myConf={
+    bootloader = {
+      enable = true;
+      efi.enable = true;
+    };
+    gui = {
+      enable = true;
+      awesome = {
+        enable = true;
+      };
+    };
   };
+
   system.stateVersion=stateVersion;
   imports = [
     physical

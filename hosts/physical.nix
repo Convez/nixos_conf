@@ -9,7 +9,7 @@
       ../modules/common.nix
       ../modules/localization.nix
       ../modules/networking.nix
-      ../modules/gui.nix
+      ../modules/gui
       ../modules/audio.nix
       ../modules/services.nix
       ../modules/users.nix

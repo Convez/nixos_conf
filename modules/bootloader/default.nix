@@ -13,7 +13,8 @@ in
     bootloader.grub.enable = mkEnableOption "Enable the GRUB bootloader" ;
   };
   imports = [
-    efiModule 
+    efiModule
+    # at one point we will have a grub module 
   ];
   config = mkIf cfg.enable {
     assertions = [
