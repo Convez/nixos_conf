@@ -2,13 +2,27 @@
 { config, pkgs, ... }:
 let 
   common = import ../modules/common.nix;
-  users = import ../modules/users.nix {inherit pkgs;};
+  users = import ../modules/users ;
 in
 {
   imports = [
     common
     users
   ];
+
+  myConf={
+    users = {
+      create= true;
+      userList = [
+        {
+          userName = "convez";
+          canSudo = true;
+          shell = pkgs.zsh;
+          extraGroups = [ "docker" ];
+        }
+      ];
+    };
+  };
   programs.nix-ld = {
     enable = true;
   };

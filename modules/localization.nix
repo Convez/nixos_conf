@@ -1,34 +1,52 @@
+{config, lib, ...}:
+let
+  cfg = config.myConf.localization;
+in
+with lib;
 {
   
-  # Set your time zone.
-  time.timeZone = "Europe/Rome";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "it_IT.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "it_IT.UTF-8";
-    LC_IDENTIFICATION = "it_IT.UTF-8";
-    LC_MEASUREMENT = "it_IT.UTF-8";
-    LC_MONETARY = "it_IT.UTF-8";
-    LC_NAME = "it_IT.UTF-8";
-    LC_NUMERIC = "it_IT.UTF-8";
-    LC_PAPER = "it_IT.UTF-8";
-    LC_TELEPHONE = "it_IT.UTF-8";
-    LC_TIME = "it_IT.UTF-8";
+  options.myConf.localization = {
+    lang = mkOption {
+      type = types.str;
+      default = "it_IT.UTF-8";
+      description = "Language to set for the system.";
+    };
+    timeZone = mkOption {
+      type = types.str;
+      default = "Europe/Rome";
+      description = "Time zone to set for the system.";
+    };
   };
+  config = {
+    # Set your time zone.
+    time.timeZone = cfg.timeZone; 
+
+    # Select internationalisation properties.
+    i18n.defaultLocale = cfg.lang;
+
+    i18n.extraLocaleSettings = {
+      LC_ADDRESS = cfg.lang;
+      LC_IDENTIFICATION = cfg.lang;
+      LC_MEASUREMENT = cfg.lang;
+      LC_MONETARY = cfg.lang;
+      LC_NAME = cfg.lang;
+      LC_NUMERIC = cfg.lang;
+      LC_PAPER = cfg.lang;
+      LC_TELEPHONE = cfg.lang;
+      LC_TIME = cfg.lang;
+    };
 
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "intl";
+    # Configure keymap in X11
+    services.xserver.xkb = {
+      layout = "gb";
+      variant = "intl";
+    };
+
+    console = {
+      font = "Lat2-Terminus16";
+      keyMap = "uk";
+      useXkbConfig = false; # use xkb.options in tty.
+    };
   };
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "uk";
-    useXkbConfig = false; # use xkb.options in tty.
-  };
-
 }

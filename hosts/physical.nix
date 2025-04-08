@@ -12,7 +12,7 @@
       ../modules/gui
       ../modules/audio.nix
       ../modules/services.nix
-      ../modules/users.nix
+      ../modules/users
     ];
 }
 

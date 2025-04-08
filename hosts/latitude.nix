@@ -16,6 +16,17 @@ in
         enable = true;
       };
     };
+    users = {
+      create= true;
+      userList = [
+        {
+          userName = "convez";
+          canSudo = true;
+          shell = pkgs.zsh;
+          extraGroups = [ "docker" ];
+        }
+      ];
+    };
   };
 
   system.stateVersion=stateVersion;

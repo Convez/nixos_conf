@@ -7,8 +7,6 @@
     openssl
     powershell
   ];
-  # Set your time zone.
-  time.timeZone = "Europe/Rome";
   system.stateVersion = stateVersion;
   # Install firefox.
   programs.firefox.enable = true;
