@@ -1,4 +1,4 @@
-{ config, languages,... }:
+{ pkgs, config, languages,... }:
 let
  cfg = config.convez.coding;
 in
@@ -7,7 +7,9 @@ in
     enable = cfg.ides.code;
     mutableExtensionsDir=true;
     profiles.default = {
-      extensions = languages.codeExtensions;
+      extensions = with pkgs.vscode-extensions;[
+          asvetliakov.vscode-neovim
+        ]++ languages.codeExtensions;
       userSettings = {
         "editor.fontFamily"= "MesloLGS NF";
         "terminal.integrated.persistentSessionReviveProcess"= "never";

@@ -36,7 +36,9 @@ in
           enable = true;
           luaModules = toInstall; 
         };
-        displayManager.startx.enable = true;
+        displayManager={
+          startx.enable = true;
+        };
       };
     };
   };

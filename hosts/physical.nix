@@ -7,10 +7,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ../modules/common.nix
-      ../modules/localization.nix
-      ../modules/networking.nix
+      ../modules/localization
+      ../modules/networking
       ../modules/gui
-      ../modules/audio.nix
+      ../modules/audio
       ../modules/services.nix
       ../modules/users
     ];

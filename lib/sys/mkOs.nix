@@ -1,13 +1,12 @@
 {nixpkgs, ...}:
-{pkgs, stable, stateVersion, system, hostName, useModules ? [], ...}:
+{pkgs, stable, stateVersion, system, hostname, useModules ? [], ...}:
   let
-    hostModule = import ../../hosts/${hostName}.nix;
+    hostModule = import ../../hosts/${hostname}.nix;
   in
     nixpkgs.lib.nixosSystem {
       inherit pkgs system;
       specialArgs = {
-        inherit stable stateVersion;
-        hostname = hostName;
+        inherit stable stateVersion hostname;
       };
       modules = useModules ++ [hostModule];
   }

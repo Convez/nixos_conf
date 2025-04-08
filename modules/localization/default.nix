@@ -36,7 +36,7 @@ with lib;
       LC_TIME = cfg.lang;
     };
 
-
+    # TODO: Move keyboard config to own file / add keyboard configuration
     # Configure keymap in X11
     services.xserver.xkb = {
       layout = "gb";

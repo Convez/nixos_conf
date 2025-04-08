@@ -1,5 +1,4 @@
 { lib, ... }:
-
 {
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = lib.mkForce false;
