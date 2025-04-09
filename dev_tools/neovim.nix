@@ -62,12 +62,15 @@ let
 in
 {
   # home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
+  home.file.".config/nvim/init.lua".source = ./neovim/init.lua;
+  home.file.".config/nvim/lua".source = ./neovim/lua;
   programs.neovim = {
     enable = cfg.ides.vim;
     viAlias = true;
     vimAlias = true;
-    # plugins = (with pkgs.vimPlugins; [
-    #   vim-plug
+    plugins = (with pkgs.vimPlugins; [
+      packer-nvim
+    ]);
     #   coc-nvim
     #   nerdtree
     #   copilot-vim # Don´t forget to run :Copilot setup

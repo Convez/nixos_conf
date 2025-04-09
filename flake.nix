@@ -30,7 +30,7 @@
   outputs = { nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager, nix-direnv, vscode-server, plasma-manager, ... }:
   let 
     supportedArchitectures = ["x86_64-linux"];
-    stateVersion = "25.05";
+    stateVersion = "24.11";
     user = "convez";
     helper = import ./lib/sys {
       inherit nixpkgs nixunstable nixmaster home-manager;
@@ -44,13 +44,13 @@
           }; 
 	
         latitude = helper.mkOs {
-          hostName = "latitude";
+          hostname = "latitude";
           inherit stable system stateVersion user; 
           pkgs = stable;
         }; 
 		  
         wsl = helper.mkOs {
-          hostName = "wsl";
+          hostname = "wsl";
           inherit stable system stateVersion user;
           pkgs = stable;
           useModules = [

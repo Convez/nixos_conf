@@ -16,6 +16,11 @@ in
         enable = true;
       };
     };
+    virtualisation = {
+     enable = true;
+      docker = true;
+      virt-manager = true;
+    };
     users = {
       create= true;
       userList = [
@@ -23,7 +28,7 @@ in
           userName = "convez";
           canSudo = true;
           shell = pkgs.zsh;
-          extraGroups = [ "docker" ];
+          extraGroups = [ "docker" "libvritd" ];
         }
       ];
     };

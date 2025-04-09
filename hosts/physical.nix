@@ -12,6 +12,7 @@
       ../modules/gui
       ../modules/audio
       ../modules/services.nix
+      ../modules/virtualisation
       ../modules/users
     ];
 }

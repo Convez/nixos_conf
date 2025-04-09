@@ -12,7 +12,4 @@
       PasswordAuthentication = true;
     };
   };
-  
-  #Enable docker
-  virtualisation.docker.enable =  true;
 }

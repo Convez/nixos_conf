@@ -1,9 +1,7 @@
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
+local packer = require("packer")
 
+local setup = function (use)
+  use 'ThePrimeagen/vim-be-good'
+end
 
--- List your plugins here
--- Plug('tpope/vim-sensible')
-Plug('ThePrimeagen/vim-be-good')
-
-vim.call("plug#end")
+packer.startup(setup)
