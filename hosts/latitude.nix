@@ -1,6 +1,6 @@
 { pkgs, lib, stateVersion, config, ... }:
 let 
-  physical = import ./physical.nix {inherit pkgs lib; };
+  physical = import ./physical.nix ;
   bootloader = import ../modules/bootloader;
 in
 {
