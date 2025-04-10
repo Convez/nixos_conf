@@ -1,7 +1,7 @@
 { pkgs, lib, stateVersion, config, ... }:
 let 
-  physical = import ./physical.nix ;
-  bootloader = import ../modules/bootloader;
+  os = import ../os ;
+  hw = import ./latitude/hardware-configuration.nix;
 in
 {
 
@@ -55,9 +55,8 @@ in
 
   system.stateVersion=stateVersion;
   imports = [
-    physical
-    ./latitude/hardware-configuration.nix
-    bootloader
+    os
+    hw
   ];
   environment.variables = {
     TERM = "alacritty";

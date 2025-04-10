@@ -6,13 +6,15 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ../modules/system
-      ../modules/localization
-      ../modules/networking
-      ../modules/gui
-      ../modules/audio
-      ../modules/virtualisation
-      ../modules/users
+      ./audio
+      ./bootloader
+      ./gui
+      ./localization
+      ./networking
+      ./shells
+      ./system
+      ./users
+      ./virtualisation
     ];
 }
 

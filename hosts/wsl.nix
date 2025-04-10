@@ -1,17 +1,11 @@
 # ~/nixos-config/hosts/wsl.nix
 { config, pkgs, ... }:
 let 
-  system = import ../modules/system;
-  shells = import ../modules/shells;
-  networking = import ../modules/networking;
-  users = import ../modules/users ;
+  os = import ../os ;
 in
 {
   imports = [
-    system
-    shells 
-    networking
-    users
+    os
   ];
 
   myConf={
@@ -33,6 +27,10 @@ in
         powershell
       ];
       defaultShell = pkgs.zsh;
+    };
+    system = {
+      useFlakes = true;
+      useDconf = true;
     };
   };
   programs.nix-ld = {
