@@ -21,6 +21,25 @@ in
       docker = true;
       virt-manager = true;
     };
+    shells = {
+      shells = with pkgs; [ 
+        zsh 
+        fish
+        powershell
+      ];
+      terminals = with pkgs;[
+        alacritty
+        kitty
+        terminator
+      ];
+    };
+    networking = {
+      ssh = {
+        enable = true;
+        keyOnly = false;
+      };
+      printing = true;
+    };
     users = {
       create= true;
       userList = [

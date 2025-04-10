@@ -6,12 +6,11 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ../modules/common.nix
+      ../modules/system
       ../modules/localization
       ../modules/networking
       ../modules/gui
       ../modules/audio
-      ../modules/services.nix
       ../modules/virtualisation
       ../modules/users
     ];

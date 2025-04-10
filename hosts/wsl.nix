@@ -1,12 +1,16 @@
 # ~/nixos-config/hosts/wsl.nix
 { config, pkgs, ... }:
 let 
-  common = import ../modules/common.nix;
+  system = import ../modules/system;
+  shells = import ../modules/shells;
+  networking = import ../modules/networking;
   users = import ../modules/users ;
 in
 {
   imports = [
-    common
+    system
+    shells 
+    networking
     users
   ];
 
@@ -20,6 +24,13 @@ in
           shell = pkgs.zsh;
           extraGroups = [ "docker" ];
         }
+      ];
+    };
+    shells = {
+      shells = with pkgs; [ 
+        zsh 
+        fish
+        powershell
       ];
     };
   };
