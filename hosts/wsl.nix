@@ -32,6 +32,7 @@ in
         fish
         powershell
       ];
+      defaultShell = pkgs.zsh;
     };
   };
   programs.nix-ld = {
