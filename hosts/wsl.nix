@@ -31,8 +31,11 @@ in
     system = {
       useFlakes = true;
       useDconf = true;
+      useHomeManager = true;
     };
   };
+  # This is needed for the rust analyzer
+  # TODO: However, if I manage to get devenv to work, I can remove this
   programs.nix-ld = {
     enable = true;
   };

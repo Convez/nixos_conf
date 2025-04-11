@@ -54,7 +54,6 @@ in
       allowUnfree = true;
       allowUnfreePredicate = _: true;
   };
-  programs.home-manager.enable = true;
   # Define home packages to install
   # TODO: Move gnome stuff to gnome config
   # TODO: Language stuff should not be installed globally. 

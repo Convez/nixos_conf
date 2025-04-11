@@ -1,6 +1,8 @@
 {pkgs, config, lib, ...}:
 let
   cfg = config.myConf.shells;
+  allowedTerminals = [ pkgs.xterm ] ++ cfg.terminals;
+  isTerminalConfigCorrect = lib.count (x: x == cfg.defaultTerminal) allowedTerminals == 1;
   allowedShells = [ pkgs.bash ] ++ cfg.shells;
   isShellConfigCorrect = lib.count (x: x == cfg.defaultShell) allowedShells == 1;
 in
@@ -13,6 +15,11 @@ with types;
       default = [];
       description = "A list of terminal emulators packages.";
     };
+    defaultTerminal= mkOption{
+      type =  package;
+      default = pkgs.xterm;
+      description = "Change default terminal emulator package. (xterm is used by default)";
+    };
     shells = mkOption {
       type =  listOf package;
       default = [];
@@ -21,11 +28,15 @@ with types;
     defaultShell = mkOption{
       type =  package;
       default = pkgs.bash;
-      description = "Default shell package.";
+      description = "Change default shell package. (bash is used by default)";
     };
   };
   config = {
     assertions = [
+      {
+        assertion = isTerminalConfigCorrect;
+        message = "Default terminal must be one of the installed terminals.";
+      }
       {
         assertion = isShellConfigCorrect;
         message = "Default shell must be one of the installed shells.";
@@ -33,5 +44,9 @@ with types;
     ];
     environment.systemPackages = cfg.terminals ++ cfg.shells; 
     users.defaultUserShell = cfg.defaultShell;
+    
+    environment.variables = {
+      TERM = cfg.defaultTerminal.pname;
+    };
   };
 }

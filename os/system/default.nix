@@ -1,8 +1,8 @@
 {pkgs, stateVersion, config, lib, ...}:
+with lib;
 let
   cfg = config.myConf.system; 
 in
-with lib;
 {
   options.myConf.system = {
     useFlakes = mkOption {
@@ -15,10 +15,10 @@ with lib;
       default = false;
       description = "Use dconf";
     };
+    useHomeManager = mkEnableOption "Enable home manager";
   };
   config = {
     system.stateVersion = stateVersion;
-
     # Enable Flakes
     nix = {
       package = pkgs.nixVersions.stable;
@@ -28,5 +28,8 @@ with lib;
     };
     # Enable dconf
     programs.dconf.enable = cfg.useDconf;
+    environment.systemPackages = with pkgs; mkIf cfg.useHomeManager [
+      home-manager
+    ];
   };
 }

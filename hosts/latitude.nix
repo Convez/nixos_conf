@@ -17,7 +17,7 @@ in
       };
     };
     virtualisation = {
-     enable = true;
+      enable = true;
       docker = true;
       virt-manager = true;
     };
@@ -27,11 +27,13 @@ in
         fish
         powershell
       ];
+      defaultShell = pkgs.zsh;
       terminals = with pkgs;[
         alacritty
         kitty
         terminator
       ];
+      defaultTerminal = pkgs.alacritty;
     };
     networking = {
       ssh = {
@@ -51,14 +53,15 @@ in
         }
       ];
     };
+    system = {
+      useFlakes = true;
+      useDconf = true;
+      useHomeManager = true;
+    };
   };
 
-  system.stateVersion=stateVersion;
   imports = [
     os
     hw
   ];
-  environment.variables = {
-    TERM = "alacritty";
-  };
 }
