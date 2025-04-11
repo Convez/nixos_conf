@@ -1,12 +1,11 @@
-{config, pkgs,...}:
-{
-  
+{ config, pkgs, ... }: {
+
   programs.zsh = {
     enable = true;
     enableCompletion = false;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
-    
+
     initExtra = ''
       bindkey -v
       bindkey '^R' history-incremental-search-backward
@@ -33,18 +32,19 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "marlonrichert/zsh-autocomplete";}
-        { name = "zsh-users/zsh-syntax-highlighting";}
-        { name = "zsh-users/zsh-history-substring-search";}
-        { name = "romkatv/powerlevel10k"; tags = [ "as:theme" "depth:1" ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
+        { name = "marlonrichert/zsh-autocomplete"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "zsh-users/zsh-history-substring-search"; }
+        {
+          name = "romkatv/powerlevel10k";
+          tags = [ "as:theme" "depth:1" ];
+        } # Installations with additional options. For the list of options, please refer to Zplug README.
       ];
     };
-    plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k-config;
-        file = "p10k.zsh";
-      }
-    ];
+    plugins = [{
+      name = "powerlevel10k-config";
+      src = ./p10k-config;
+      file = "p10k.zsh";
+    }];
   };
 }

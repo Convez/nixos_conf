@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = lib.mkForce false;
   security.rtkit.enable = true;

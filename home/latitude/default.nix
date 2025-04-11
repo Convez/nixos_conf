@@ -1,23 +1,17 @@
 { config, pkgs, lib, stateVersion, user, ... }:
 
-let 
-  settings = import ../../settings {inherit pkgs lib;};
-  languages = import ../../languages {inherit config pkgs lib;};
-  dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
-  languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
-  gnome = import ../../gnome {inherit config pkgs lib;};
-  kde = import ../../kde {inherit pkgs;};
-  awesome = import ../../awesome {inherit config lib;};
-  shellConf = import ../shell {inherit config pkgs;};
-in 
-{
-  imports = [
-    settings
-    dev_tools
-    languagePrograms
-    shellConf
-    awesome
-  ];
+let
+  settings = import ../../settings { inherit pkgs lib; };
+  languages = import ../../languages { inherit config pkgs lib; };
+  dev_tools = import ../../dev_tools { inherit config pkgs lib languages; };
+  languagePrograms =
+    import ../../languages/programs.nix { inherit config pkgs lib; };
+  gnome = import ../../gnome { inherit config pkgs lib; };
+  kde = import ../../kde { inherit pkgs; };
+  awesome = import ../../awesome { inherit config lib; };
+  shellConf = import ../shell { inherit config pkgs; };
+in {
+  imports = [ settings dev_tools languagePrograms shellConf awesome ];
 
   convez.coding = {
     enable = true;
@@ -51,19 +45,16 @@ in
   # Allow unfree packages
   # TODO: Should this be here? Wasn´t this already configured at system level?
   nixpkgs.config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
   };
   # Define home packages to install
   # TODO: Move gnome stuff to gnome config
   # TODO: Language stuff should not be installed globally. 
   # Devenv should be used in conjunction with flakes to automatically switch to useful shells
-  home.packages = (with pkgs;[
-      alacritty
-    ]) ++ 
-    languages.packages; 
+  home.packages = (with pkgs; [ alacritty ]) ++ languages.packages;
   #   gnome.packages;
-  
+
   # dconf.settings = lib.mergeAttrsList [
   #   gnome.dconf
   # ];

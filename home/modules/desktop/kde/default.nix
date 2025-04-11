@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{ pkgs, ... }: {
   programs.plasma = {
     enable = true;
 
@@ -7,14 +6,16 @@
     # Some high-level settings:
     #
     workspace = {
-      clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
+      clickItemTo =
+        "open"; # If you liked the click-to-open default from plasma 5
       lookAndFeel = "org.kde.breezedark.desktop";
       cursor = {
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
       iconTheme = "Papirus-Dark";
-      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+      wallpaper =
+        "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
 
     hotkeys.commands."launch-konsole" = {
@@ -42,9 +43,7 @@
           # ~/.config/plasma-org.kde.plasma.desktop-appletsrc.
           {
             name = "org.kde.plasma.kickoff";
-            config = {
-              General.icon = "nix-snowflake-white";
-            };
+            config = { General.icon = "nix-snowflake-white"; };
           }
           # Adding configuration to the widgets can also for example be used to
           # pin apps to the task-manager, which this example illustrates by
@@ -78,15 +77,10 @@
           {
             systemTray.items = {
               # We explicitly show bluetooth and battery
-              shown = [
-                "org.kde.plasma.battery"
-                "org.kde.plasma.bluetooth"
-              ];
+              shown = [ "org.kde.plasma.battery" "org.kde.plasma.bluetooth" ];
               # And explicitly hide networkmanagement and volume
-              hidden = [
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.volume"
-              ];
+              hidden =
+                [ "org.kde.plasma.networkmanagement" "org.kde.plasma.volume" ];
             };
           }
         ];
@@ -96,42 +90,35 @@
       {
         location = "top";
         height = 26;
-        widgets = [
-          "org.kde.plasma.appmenu"
-        ];
+        widgets = [ "org.kde.plasma.appmenu" ];
       }
     ];
 
-    window-rules = [
-      {
-        description = "Dolphin";
-        match = {
-          window-class = {
-            value = "dolphin";
-            type = "substring";
-          };
-          window-types = [ "normal" ];
+    window-rules = [{
+      description = "Dolphin";
+      match = {
+        window-class = {
+          value = "dolphin";
+          type = "substring";
         };
-        apply = {
-          noborder = {
-            value = true;
-            apply = "force";
-          };
-          # `apply` defaults to "apply-initially"
-          maximizehoriz = true;
-          maximizevert = true;
+        window-types = [ "normal" ];
+      };
+      apply = {
+        noborder = {
+          value = true;
+          apply = "force";
         };
-      }
-    ];
-
+        # `apply` defaults to "apply-initially"
+        maximizehoriz = true;
+        maximizevert = true;
+      };
+    }];
 
     #
     # Some mid-level settings:
     #
     shortcuts = {
-      ksmserver = {
-        "Lock Session" = [ "Screensaver" "Meta+Ctrl+Alt+L" ];
-      };
+      ksmserver = { "Lock Session" = [ "Screensaver" "Meta+Ctrl+Alt+L" ]; };
 
       kwin = {
         "Expose" = "Meta+,";
@@ -141,7 +128,6 @@
         "Switch Window Up" = "Meta+K";
       };
     };
-
 
     #
     # Some low-level settings:

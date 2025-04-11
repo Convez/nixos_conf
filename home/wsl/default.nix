@@ -1,22 +1,20 @@
 { config, pkgs, lib, stateVersion, user, ... }:
 let
-  settings = import ../../settings {inherit pkgs lib;};
-  languages = import ../../languages {inherit config pkgs lib;};
-  dev_tools = import ../../dev_tools {inherit config pkgs lib languages;};
-  languagePrograms = import ../../languages/programs.nix {inherit config pkgs lib;};
-  shellConf = import ../shell {inherit config pkgs;};
+  settings = import ../../settings { inherit pkgs lib; };
+  languages = import ../../languages { inherit config pkgs lib; };
+  dev_tools = import ../../dev_tools { inherit config pkgs lib languages; };
+  languagePrograms =
+    import ../../languages/programs.nix { inherit config pkgs lib; };
+  shellConf = import ../shell { inherit config pkgs; };
   zscalerCert = "af.zscaler.crt";
-in
-{
+in {
 
   convez.coding = {
     enable = true;
-    ides = {
-      vim = true;
-    };
+    ides = { vim = true; };
     languages = {
       java = {
-        enable =  true;
+        enable = true;
         version = pkgs.jdk17;
       };
       nix = true;
@@ -28,12 +26,7 @@ in
     };
     maven.settings = "af";
   };
-  imports = [
-    settings
-    dev_tools
-    languagePrograms
-    shellConf
-  ];
+  imports = [ settings dev_tools languagePrograms shellConf ];
 
   # Home manager user settings
   home = {
@@ -43,13 +36,15 @@ in
   };
   # Allow unfree packages
   nixpkgs.config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
   };
 
   # Define home packages to install
-  home.packages = (with pkgs;[
-    # retroarchFull
-  ]) ++ languages.packages;
-  home.file.".minikube/certs/zscaler.cert".source = ../../hosts/certificates/${zscalerCert};
+  home.packages = (with pkgs;
+    [
+      # retroarchFull
+    ]) ++ languages.packages;
+  home.file.".minikube/certs/zscaler.cert".source =
+    ../../hosts/certificates/${zscalerCert};
 }

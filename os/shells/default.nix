@@ -1,35 +1,37 @@
-{pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 let
   cfg = config.myConf.shells;
   allowedTerminals = [ pkgs.xterm ] ++ cfg.terminals;
-  isTerminalConfigCorrect = lib.count (x: x == cfg.defaultTerminal) allowedTerminals == 1;
+  isTerminalConfigCorrect =
+    lib.count (x: x == cfg.defaultTerminal) allowedTerminals == 1;
   allowedShells = [ pkgs.bash ] ++ cfg.shells;
-  isShellConfigCorrect = lib.count (x: x == cfg.defaultShell) allowedShells == 1;
-in
-with lib;
-with types;
-{
+  isShellConfigCorrect = lib.count (x: x == cfg.defaultShell) allowedShells
+    == 1;
+in with lib;
+with types; {
   options.myConf.shells = {
     terminals = mkOption {
-      type =  listOf package;
-      default = [];
+      type = listOf package;
+      default = [ ];
       description = "A list of terminal emulators packages.";
     };
-    defaultTerminal= mkOption{
-      type =  package;
+    defaultTerminal = mkOption {
+      type = package;
       default = pkgs.xterm;
-      description = "Change default terminal emulator package. (xterm is used by default)";
+      description =
+        "Change default terminal emulator package. (xterm is used by default)";
     };
     shells = mkOption {
-      type =  listOf package;
-      default = [];
+      type = listOf package;
+      default = [ ];
       description = "A list of shell packages.";
     };
-    defaultShell = mkOption{
-      type =  package;
+    defaultShell = mkOption {
+      type = package;
       default = pkgs.bash;
       description = "Change default shell package. (bash is used by default)";
     };
+    enableDirEnv = mkEnableOption "Enable direnv";
   };
   config = {
     assertions = [
@@ -42,11 +44,10 @@ with types;
         message = "Default shell must be one of the installed shells.";
       }
     ];
-    environment.systemPackages = cfg.terminals ++ cfg.shells; 
+    environment.systemPackages = cfg.terminals ++ cfg.shells;
     users.defaultUserShell = cfg.defaultShell;
-    
-    environment.variables = {
-      TERM = cfg.defaultTerminal.pname;
-    };
+    programs.direnv.enable = cfg.enableDirEnv;
+
+    environment.variables = { TERM = cfg.defaultTerminal.pname; };
   };
 }

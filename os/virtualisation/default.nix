@@ -1,9 +1,6 @@
-{pkgs, config, lib, ...}:
-let
-  cfg = config.myConf.virtualisation;
-in
-with lib;
-{
+{ pkgs, config, lib, ... }:
+let cfg = config.myConf.virtualisation;
+in with lib; {
   options.myConf.virtualisation = {
     enable = mkEnableOption "Enable virtualisation support";
     docker = mkEnableOption "Enable docker support";

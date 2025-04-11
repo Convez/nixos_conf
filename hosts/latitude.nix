@@ -1,20 +1,17 @@
 { pkgs, lib, stateVersion, config, ... }:
-let 
-  os = import ../os ;
+let
+  os = import ../os;
   hw = import ./latitude/hardware-configuration.nix;
-in
-{
+in {
 
-  myConf={
+  myConf = {
     bootloader = {
       enable = true;
       efi.enable = true;
     };
     gui = {
       enable = true;
-      awesome = {
-        enable = true;
-      };
+      awesome = { enable = true; };
     };
     virtualisation = {
       enable = true;
@@ -22,17 +19,9 @@ in
       virt-manager = true;
     };
     shells = {
-      shells = with pkgs; [ 
-        zsh 
-        fish
-        powershell
-      ];
+      shells = with pkgs; [ zsh fish powershell ];
       defaultShell = pkgs.zsh;
-      terminals = with pkgs;[
-        alacritty
-        kitty
-        terminator
-      ];
+      terminals = with pkgs; [ alacritty kitty terminator ];
       defaultTerminal = pkgs.alacritty;
     };
     networking = {
@@ -43,15 +32,13 @@ in
       printing = true;
     };
     users = {
-      create= true;
-      userList = [
-        {
-          userName = "convez";
-          canSudo = true;
-          shell = pkgs.zsh;
-          extraGroups = [ "docker" "libvritd" ];
-        }
-      ];
+      create = true;
+      userList = [{
+        userName = "convez";
+        canSudo = true;
+        shell = pkgs.zsh;
+        extraGroups = [ "docker" "libvritd" ];
+      }];
     };
     system = {
       useFlakes = true;
@@ -60,8 +47,5 @@ in
     };
   };
 
-  imports = [
-    os
-    hw
-  ];
+  imports = [ os hw ];
 }

@@ -1,6 +1,6 @@
 { config, pkgs, lib, languages, ... }:
 let
- cfg = config.convez.coding;
+  cfg = config.convez.coding;
 
   baseConfig = ''
     " open NERDTree automatically
@@ -59,8 +59,7 @@ let
       nnoremap <c-x> :bp \|bd #<cr>
   '';
   inherit (lib) mkOutOfStoreSymlink;
-in
-{
+in {
   # home.sessionVariables.EDITOR = if cfg.ides.vim then "nvim" else "nano"; 
   home.file.".config/nvim/init.lua".source = ./neovim/init.lua;
   home.file.".config/nvim/lua".source = ./neovim/lua;
@@ -68,9 +67,7 @@ in
     enable = cfg.ides.vim;
     viAlias = true;
     vimAlias = true;
-    plugins = (with pkgs.vimPlugins; [
-      packer-nvim
-    ]);
+    plugins = (with pkgs.vimPlugins; [ packer-nvim ]);
     #   coc-nvim
     #   nerdtree
     #   copilot-vim # Don´t forget to run :Copilot setup
@@ -87,5 +84,5 @@ in
     #   languages.vimSettings
     # ];
   };
-  
+
 }

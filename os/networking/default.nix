@@ -1,13 +1,10 @@
-{pkgs, hostname, config, lib, ...}:
-let
-  cfg =  config.myConf.networking;
+{ pkgs, hostname, config, lib, ... }:
+let cfg = config.myConf.networking;
 
-in
-with lib;
-{
+in with lib; {
   options.myConf.networking = {
-    ssh ={
-       enable = mkOption {
+    ssh = {
+      enable = mkOption {
         type = types.bool;
         default = false;
         description = "Enable SSH server";
@@ -15,7 +12,7 @@ with lib;
       keyOnly = mkOption {
         type = types.bool;
         default = false;
-        description = "Enable SSH key authentication only"; 
+        description = "Enable SSH key authentication only";
       };
     };
     printing = mkOption {
@@ -38,12 +35,8 @@ with lib;
       };
     };
     networking.hostName = hostname;
-    networking.networkmanager.enable =  lib.mkForce true;  # Easiest to use and most distros use this by default.
-    environment.systemPackages = with pkgs; [
-      librewolf
-      wget
-      curl
-      openssl
-    ];
+    networking.networkmanager.enable =
+      lib.mkForce true; # Easiest to use and most distros use this by default.
+    environment.systemPackages = with pkgs; [ librewolf wget curl openssl ];
   };
 }

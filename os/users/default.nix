@@ -1,4 +1,4 @@
-{config, lib, ... }:
+{ config, lib, ... }:
 with lib;
 with lib.types;
 let
@@ -31,14 +31,14 @@ let
       isNormalUser = true;
       description = user.userName;
       shell = user.shell;
-      extraGroups = (if user.canSudo then [ "wheel" "networkmanager" ] else []) ++ user.extraGroups;
+      extraGroups = (if user.canSudo then [ "wheel" "networkmanager" ] else [ ])
+        ++ user.extraGroups;
     };
   }) cfg.userList;
   toCreateAttr = listToAttrs toCreate;
-in
-{
+in {
   options.myConf.users = {
-    create= mkEnableOption "Create users";
+    create = mkEnableOption "Create users";
     userList = mkOption {
       type = listOf userType;
       description = "List of users to create";

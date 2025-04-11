@@ -1,9 +1,7 @@
-{pkgs, stateVersion, config, lib, ...}:
+{ pkgs, stateVersion, config, lib, ... }:
 with lib;
-let
-  cfg = config.myConf.system; 
-in
-{
+let cfg = config.myConf.system;
+in {
   options.myConf.system = {
     useFlakes = mkOption {
       type = types.bool;
@@ -28,8 +26,7 @@ in
     };
     # Enable dconf
     programs.dconf.enable = cfg.useDconf;
-    environment.systemPackages = with pkgs; mkIf cfg.useHomeManager [
-      home-manager
-    ];
+    environment.systemPackages = with pkgs;
+      mkIf cfg.useHomeManager [ home-manager ];
   };
 }

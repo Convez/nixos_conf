@@ -10,9 +10,8 @@ let
       sha256 = "BFjlG6JI58vD9SCsigfiJCv/eA+uo9/vmy1S4K42Tfk=";
     };
   };
-in
-{
-  packages = lib.optionals convez.coding.languages.cloud (with pkgs;[
+in {
+  packages = lib.optionals convez.coding.languages.cloud (with pkgs; [
     minikube
     kubectl
     kubelogin
@@ -24,23 +23,19 @@ in
     buildpack
   ]);
 
-  codeExtensions = lib.optionals convez.coding.languages.cloud (with pkgs.vscode-extensions;[
-    ms-azuretools.vscode-docker
-    ms-vscode-remote.remote-containers
-    redhat.vscode-yaml
-    ms-kubernetes-tools.vscode-kubernetes-tools
-    hashicorp.terraform
-  ]);
+  codeExtensions = lib.optionals convez.coding.languages.cloud
+    (with pkgs.vscode-extensions; [
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-containers
+      redhat.vscode-yaml
+      ms-kubernetes-tools.vscode-kubernetes-tools
+      hashicorp.terraform
+    ]);
 
-  codeSettings = lib.optionalAttrs convez.coding.languages.cloud {
-  };
+  codeSettings = lib.optionalAttrs convez.coding.languages.cloud { };
 
-  vimPlugins = lib.optionals convez.coding.languages.cloud(with pkgs.vimPlugins;[
-    coc-docker
-    vim-helm
-    vim-hashicorp-tools
-  ]);
-  
-  vimSettings = ''
-  '';
+  vimPlugins = lib.optionals convez.coding.languages.cloud
+    (with pkgs.vimPlugins; [ coc-docker vim-helm vim-hashicorp-tools ]);
+
+  vimSettings = "";
 }

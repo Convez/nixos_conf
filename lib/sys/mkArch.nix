@@ -1,5 +1,5 @@
-{nixpkgs, nixunstable,nixmaster,home-manager, ...}:
-system: rec{
+{ nixpkgs, nixunstable, nixmaster, home-manager, ... }:
+system: rec {
   inherit system;
   # This is equivalent to nixpgks.config
   config = {

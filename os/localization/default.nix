@@ -1,10 +1,7 @@
-{config, lib, ...}:
-let
-  cfg = config.myConf.localization;
-in
-with lib;
-{
-  
+{ config, lib, ... }:
+let cfg = config.myConf.localization;
+in with lib; {
+
   options.myConf.localization = {
     lang = mkOption {
       type = types.str;
@@ -19,7 +16,7 @@ with lib;
   };
   config = {
     # Set your time zone.
-    time.timeZone = cfg.timeZone; 
+    time.timeZone = cfg.timeZone;
 
     # Select internationalisation properties.
     i18n.defaultLocale = cfg.lang;

@@ -1,9 +1,9 @@
-{config, pkgs, lib, ...}:
-let 
+{ config, pkgs, lib, ... }:
+let
   inherit (config) convez;
   enableC = convez.coding.languages.c;
-in{
-  packages = lib.optionals enableC (with pkgs;[
+in {
+  packages = lib.optionals enableC (with pkgs; [
     clang-tools
     cmake
     codespell
@@ -16,17 +16,12 @@ in{
     ccls
     gcc
   ]);
-  codeExtensions = lib.optionals enableC (with pkgs.vscode-extensions;[
-    ms-vscode.cpptools
-  ]);
+  codeExtensions =
+    lib.optionals enableC (with pkgs.vscode-extensions; [ ms-vscode.cpptools ]);
 
-  codeSettings = lib.optionalAttrs enableC {
-  };
-  
-  vimPlugins = lib.optionals enableC(with pkgs.vimPlugins;[
-    coc-clangd
-  ]);
-  
-  vimSettings = ''
-  '';
+  codeSettings = lib.optionalAttrs enableC { };
+
+  vimPlugins = lib.optionals enableC (with pkgs.vimPlugins; [ coc-clangd ]);
+
+  vimSettings = "";
 }
