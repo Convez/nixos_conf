@@ -26,7 +26,7 @@
     let
       supportedArchitectures = [ "x86_64-linux" ];
       stateVersion = "24.11";
-      user = "convez";
+      users = [ "convez" ];
       helper = import ./lib/sys {
         inherit nixpkgs nixunstable nixmaster home-manager;
       };
@@ -35,19 +35,19 @@
         with helper.mkArch (builtins.elemAt supportedArchitectures 0); {
           nixosConfigurations = {
             iso = helper.mkIso {
-              inherit stable system stateVersion user;
+              inherit stable system stateVersion;
               pkgs = stable;
             };
 
             latitude = helper.mkOs {
               hostname = "latitude";
-              inherit stable system stateVersion user;
+              inherit stable system stateVersion;
               pkgs = stable;
             };
 
             wsl = helper.mkOs {
               hostname = "wsl";
-              inherit stable system stateVersion user;
+              inherit stable system stateVersion;
               pkgs = stable;
               useModules = [
                 nixos-wsl.nixosModules.default
