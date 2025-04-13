@@ -26,7 +26,6 @@
     let
       supportedArchitectures = [ "x86_64-linux" ];
       stateVersion = "24.11";
-      users = [ "convez" ];
       helper = import ./lib/sys {
         inherit nixpkgs nixunstable nixmaster home-manager;
       };
@@ -58,7 +57,7 @@
           homeConfigurations = {
             "convez@latitude" = home-manager.lib.homeManagerConfiguration {
               pkgs = unstable;
-              extraSpecialArgs = { inherit system stateVersion user; };
+              extraSpecialArgs = { user = "convez"; inherit system stateVersion; };
               modules = [
                 plasma-manager.homeManagerModules.plasma-manager
                 ./home/latitude
@@ -66,7 +65,7 @@
             };
             "convez@wsl" = home-manager.lib.homeManagerConfiguration {
               pkgs = unstable;
-              extraSpecialArgs = { inherit stable system stateVersion user; };
+              extraSpecialArgs = { user = "convez"; inherit stable system stateVersion; };
               modules = [ ./home/wsl ];
             };
           };

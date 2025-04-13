@@ -1,7 +1,17 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
-in {
-  home.file.".xinitrc".text = "awesome";
-  home.file.".config/awesome".source =
-    config.lib.file.mkOutOfStoreSymlink ./config;
+in 
+with lib;
+{
+  options = {
+    myHome.gui.awesome = { 
+      enable = mkEnableOption "Enable awesome layout config";
+    };
+  }; 
+  config = mkIf config.myHome.gui.awesome.enable {
+    home.file={
+      ".xinitrc".text = "awesome";
+      ".config/awesome".source = ./config;
+    };
+  };
 }
