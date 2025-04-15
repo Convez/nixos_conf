@@ -2,7 +2,7 @@
 let
 in with lib; { imports = [ 
   ./awesome 
-  # ./gnome 
+  ./gnome 
   ./kde 
   ]; 
 }

@@ -8,6 +8,10 @@ in {
     gui = {
       awesome.enable = true;
     };
+    git = {
+      userName = "Convez";
+      userEmail = "convezione@proton.me";
+    };
   };
   # convez.coding = {
   #   enable = true;

@@ -14,6 +14,9 @@ in {
         extraGroups = [ "docker" ];
       }];
     };
+    localization = {
+      lang = "en_US.UTF-8";
+    };
     shells = {
       shells = with pkgs; [ zsh fish powershell ];
       defaultShell = pkgs.zsh;
