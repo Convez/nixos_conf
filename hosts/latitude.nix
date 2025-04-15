@@ -23,6 +23,7 @@ in {
       defaultShell = pkgs.zsh;
       terminals = with pkgs; [ alacritty kitty terminator ];
       defaultTerminal = pkgs.alacritty;
+      enableDirEnv = true;
     };
     networking = {
       ssh = {

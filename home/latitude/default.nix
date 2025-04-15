@@ -12,6 +12,10 @@ in {
       userName = "Convez";
       userEmail = "convezione@proton.me";
     };
+    dev = {
+      nvim.enable = true;
+      vscode.enable = true;
+    };
   };
   # convez.coding = {
   #   enable = true;
