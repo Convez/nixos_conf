@@ -7,6 +7,7 @@ with lib;{
       enable = mkEnableOption "Enable awesome layout config";
     };
   };
+  imports = [<plasma-manager/modules>];
   config = mkIf cfg.enable {
     programs.plasma = {
       enable = true;

@@ -45,9 +45,28 @@ with types; {
       }
     ];
     environment.systemPackages = cfg.terminals ++ cfg.shells;
-    users.defaultUserShell = cfg.defaultShell;
-    programs.direnv.enable = cfg.enableDirEnv;
-
+    
+    # Handle fish as default shell edge case
+    # Fish is not POSIX compliant, which can cause issues
+    # In this case, we will set bash as default shell
+    # And have bash spawn fish
+    users.defaultUserShell = if cfg.defaultShell == pkgs.fish then pkgs.bash else cfg.defaultShell;
+    programs.bash = mkIf (cfg.defaultShell == pkgs.fish) {
+      interactiveShellInit = ''
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+      '';
+    }; 
+    programs = {
+      direnv.enable = cfg.enableDirEnv;
+      # Enable all supported shells (bash is enabled by default)
+      fish.enable = true;
+      zsh.enable = true;
+    };
     environment.variables = { TERM = cfg.defaultTerminal.pname; };
+    
   };
 }

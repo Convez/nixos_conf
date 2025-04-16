@@ -19,7 +19,7 @@ in {
     };
     shells = {
       shells = with pkgs; [ zsh fish powershell ];
-      defaultShell = pkgs.zsh;
+      defaultShell = pkgs.bash;
       terminals = with pkgs; [ kitty ];
       defaultTerminal = pkgs.kitty;
       enableDirEnv = true;

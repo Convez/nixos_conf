@@ -46,7 +46,5 @@ in {
   };
   config = mkIf cfg.create {
     users.users = toCreateAttr;
-    # TODO: Move this to a separate module allowing multiple shell installation
-    programs.zsh.enable = true;
   };
 }

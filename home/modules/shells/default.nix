@@ -1,12 +1,13 @@
 {pkgs, config, lib, ...}:
 let
   zsh = import ./zsh;
+  fish = import ./fish;
   cfg = config.myHome.shells;
   toInstall = [pkgs.meslo-lgs-nf] ++ cfg.extraFonts;
 in
 with lib;
 {
-  imports = [zsh];
+  imports = [zsh fish];
   options.myHome.shells = {
     extraFonts = mkOption {
       type = types.listOf types.package;

@@ -2,10 +2,11 @@
 let
   neovim = import ./neovim ;
   vscodium = import ./vscode; 
+  cli = import ./cli;
   cfg = config.myHome.git;
 in 
 with lib;{
-  imports = [ neovim vscodium ];
+  imports = [ neovim vscodium cli ];
 
   options = {
     myHome.git = {

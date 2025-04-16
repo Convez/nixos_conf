@@ -12,11 +12,11 @@ let
   };
 in {
   packages = lib.optionals convez.coding.languages.cloud (with pkgs; [
+    azure-cli
     minikube
     kubectl
     kubelogin
     k9s
-    azure-cli
     kubernetes-helm
     helmfile
     terraform
