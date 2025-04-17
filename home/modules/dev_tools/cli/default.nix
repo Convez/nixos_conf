@@ -7,7 +7,6 @@ let
     k9s
     kubernetes-helm
     helmfile
-    terraform
   ]);
   miniK8s = lib.optionals cfg.enableMinikube (with pkgs; [
     minikube
