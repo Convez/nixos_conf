@@ -1,8 +1,8 @@
 print("Starting nvim configuring")
 require("keymap")
-require("plugins")
-require("lsp").setup()
-vim.api.nvim_create_autocmd("User", {
+require("plugin")
+-- require("lsp").setup()
+--[[ vim.api.nvim_create_autocmd("User", {
   pattern = "DirenvExported",
   callback = function()
     vim.cmd("LspStop")
@@ -10,4 +10,4 @@ vim.api.nvim_create_autocmd("User", {
     require("lsp").setup()
     print("Direnv updated env; LSPs reloaded.")
   end,
-})
+}) ]]
