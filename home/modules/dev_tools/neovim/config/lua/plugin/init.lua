@@ -15,6 +15,16 @@ local setup = function (use)
   use 'sts10/vim-pink-moon'
   use 'rose-pine/neovim'
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use 'nvim-treesitter/playground'
+  
+  use 'mbbill/undotree'
+  -- Git integration in vim
+  use 'tpope/vim-fugitive'
 end
 
 packer.startup(setup)
