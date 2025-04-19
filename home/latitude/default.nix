@@ -12,7 +12,16 @@ in {
       userName = "Convez";
       userEmail = "convezione@proton.me";
     };
-    dev = {
+    shells = {
+      zsh = {
+	enable = true;
+	enableAutocomplete = true;
+      };
+      fish = {
+	enable = true;
+      };
+    };
+   dev = {
       nvim.enable = true;
       vscode.enable = true;
     };
