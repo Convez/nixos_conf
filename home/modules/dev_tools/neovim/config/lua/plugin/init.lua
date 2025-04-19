@@ -6,7 +6,7 @@ local setup = function (use)
     requires = {{ 'nvim-lua/plenary.nvim'}}
   }
   use 'direnv/direnv.vim'
-  -- use 'neovim/nvim-lspconfig'
+  use 'neovim/nvim-lspconfig'
   use 'mfussenegger/nvim-jdtls'
   use 'ThePrimeagen/vim-be-good'
   
