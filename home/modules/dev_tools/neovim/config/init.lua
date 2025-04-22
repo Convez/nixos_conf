@@ -10,23 +10,8 @@ vim.opt.autoindent = true
 require("keymap")
 require("plugin")
 
-vim.lsp.config('luals', {
-  on_init = function()
-    print('luals now runs in the background')
-  end,
-})
-
-vim.lsp.enable('luals')
-vim.lsp.config('rust_analyzer', {
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = false;
-      }
-    }
-  }
-})
-vim.lsp.enable('rust-analyzer')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('rust_analyzer')
 -- require("lsp").setup()
 --[[ vim.api.nvim_create_autocmd("User", {
   pattern = "DirenvExported",

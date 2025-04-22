@@ -20,7 +20,7 @@ in {
     shells = {
       shells = with pkgs; [ zsh fish powershell ];
       defaultShell = pkgs.bash;
-      terminals = with pkgs; [ kitty ];
+      terminals = with pkgs; [ tmux kitty ];
       defaultTerminal = pkgs.kitty;
       enableDirEnv = true;
     };
