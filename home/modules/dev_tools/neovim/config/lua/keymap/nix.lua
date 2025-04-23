@@ -1,4 +1,3 @@
-print('Setting keymap for nix')
 -- Write template for nix new module
 -- Keymap set in normal mode (n)
 -- Responds to <leader>nxm, where leader is whitespace (see init.lua)

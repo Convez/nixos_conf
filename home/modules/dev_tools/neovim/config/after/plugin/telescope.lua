@@ -1,5 +1,4 @@
 local builtin = require('telescope.builtin')
-print("Starting telescope config")
 local function gitignore()
   local gitignore = vim.fn.getcwd() .. './gitignore'
   local file = io.open(".gitignore", "r")
@@ -28,7 +27,6 @@ local function gitignore()
   end
 
   file:close()
-  print("Gitignore args: ", vim.inspect(args))
   return args
 end
 
