@@ -10,7 +10,7 @@ local function cfg_common(client,bufrn)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 end
 vim.lsp.config("*", {
-  on_attach = cfg_common 
+  on_attach = cfg_common
 })
 
 vim.lsp.config("rust_analyzer", {
