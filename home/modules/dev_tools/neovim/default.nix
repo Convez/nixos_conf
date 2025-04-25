@@ -21,7 +21,6 @@ with lib; {
     home.packages = with pkgs; [
     # RipGrep needed for telescope to search
       ripgrep
-      lua-language-server
     ];
   };
 

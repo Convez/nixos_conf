@@ -21,10 +21,13 @@
     };
   };
 
-  outputs = { nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager
+  outputs = {self, nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager
     , vscode-server, plasma-manager, ... }:
     let
       supportedArchitectures = [ "x86_64-linux" ];
+      forEachArch = f: nixpkgs.lib.genAttrs supportedArchitectures (system: f {
+        pkgs = import nixpkgs { inherit system; };
+      });
       stateVersion = "24.11";
       helper = import ./lib/sys {
         inherit nixpkgs nixunstable nixmaster home-manager;
@@ -70,7 +73,22 @@
             };
           };
         };
-
-    in linuxConf // { inherit (linuxConf) homeConfigurations; };
+        devShells = forEachArch ({ pkgs }: {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              cachix
+              lorri
+              niv
+              nixfmt-classic
+              statix
+              vulnix
+              haskellPackages.dhall-nix
+              nixd 
+              lua-language-server
+              lua
+            ];
+          };
+        });
+    in linuxConf // { inherit devShells; } // { inherit (linuxConf) homeConfigurations ; };
 }
 
