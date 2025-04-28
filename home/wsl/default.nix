@@ -28,6 +28,9 @@ in {
         fish = {
           enable = true;
         };
+        tmux = {
+          enable = true;
+        };
       };
       cli = {
         enableKubeTools = true;
