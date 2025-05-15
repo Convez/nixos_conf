@@ -10,7 +10,7 @@ in {
       userList = [{
         userName = "convez";
         canSudo = true;
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         extraGroups = [ "docker" ];
       }];
     };

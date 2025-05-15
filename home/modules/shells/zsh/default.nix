@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }: 
 let
 cfg = config.myHome.shells.zsh;
+hasTmux = config.myHome.shells.tmux.enable;
+useTmux = if hasTmux then ''
+			if [ "$TMUX" = "" ]; then tmux; fi
+'' else "";
 baseConfig = ''
       bindkey -v
       bindkey '^R' history-incremental-search-backward
@@ -16,6 +20,7 @@ autoCompleteConf = if cfg.enableAutocomplete then ''
 '' else "";
 concatLines = lib.concatStringsSep "\n" cfg.extraInitConfig; 
 totalInitConfig = ''
+			${useTmux}
       ${baseConfig}
       ${autoCompleteConf}
       ${concatLines}

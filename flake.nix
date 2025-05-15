@@ -86,6 +86,7 @@
               nixd 
               lua-language-server
               lua
+							fish-lsp
             ];
           };
         });

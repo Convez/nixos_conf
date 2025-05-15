@@ -77,3 +77,6 @@ if(vim.fn.executable('jdtls')==1) then
   vim.lsp.enable('java_language_server')
 end
 
+if(vim.fn.executable('fish-lsp')==1) then
+	vim.lsp.enable('fish_lsp')
+end
