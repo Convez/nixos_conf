@@ -19,13 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+		nix-linguist.url = "github:Convez/nix-linguist";
   };
 
   outputs = {self, nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager
-    , vscode-server, plasma-manager, ... }:
+    , vscode-server, plasma-manager, nix-linguist, ... }:
     let
       supportedArchitectures = [ "x86_64-linux" ];
       forEachArch = f: nixpkgs.lib.genAttrs supportedArchitectures (system: f {
+				inherit system;
         pkgs = import nixpkgs { inherit system; };
       });
       stateVersion = "24.11";
@@ -73,8 +75,9 @@
             };
           };
         };
-        devShells = forEachArch ({ pkgs }: {
+        devShells = forEachArch ({ pkgs, system }: {
           default = pkgs.mkShell {
+						inputsFrom = [nix-linguist.devShells.${system}.default];
             packages = with pkgs; [
               cachix
               lorri

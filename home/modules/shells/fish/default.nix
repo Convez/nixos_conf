@@ -21,6 +21,7 @@ config={
 		enable = cfg.enable;
 		interactiveShellInit = ''
 			${useTmux}
+			set fish_greeting
 		'';
 	};
 };
