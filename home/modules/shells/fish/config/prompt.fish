@@ -14,10 +14,14 @@ function fish_prompt
 	else
 		set status_line (set_color green)"☺"(set_color normal)
 	end
-  set -l langs_line
-	if type -q github-linguist; and type type -q jq; and test -d .git
-		set langs_line (set_color 62A)"["(github-linguist . -j | jq --raw-output 'to_entries|sort_by(.value.percentage)|reverse|map(.key)|@csv|gsub("\"";"")')"]"(set_color normal)
-	end
+  set -l langs_line (
+		if test -n "$PROJECT_LANGS"
+			echo -n (set_color  62A)"[$PROJECT_LANGS]"(set_color normal)
+		end
+	)
+	#if type -q github-linguist; and type type -q jq; and test -d .git
+	#	set langs_line (set_color 62A)"["(github-linguist . -j | jq --raw-output 'to_entries|sort_by(.value.percentage)|reverse|map(.key)|@csv|gsub("\"";"")')"]"(set_color normal)
+	#end
 	echo -n -s "$langs_line$nix_shell_info"
 	echo -n -s -e (set_color green)"$shortened_dir\n$status_line>"
 end
