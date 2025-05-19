@@ -7,6 +7,7 @@ in {
   myHome = {
     gui = {
       awesome.enable = true;
+			hyprland.enable = true;
     };
     git = {
       userName = "Convez";

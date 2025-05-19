@@ -12,6 +12,7 @@ in {
     gui = {
       enable = true;
       awesome = { enable = true; };
+			hyprland.enable = true;
     };
     virtualisation = {
       enable = true;
@@ -37,8 +38,8 @@ in {
       userList = [{
         userName = "convez";
         canSudo = true;
-        shell = pkgs.zsh;
-        extraGroups = [ "docker" "libvritd" ];
+        shell = pkgs.fish;
+        extraGroups = [ "audio" "docker" "libvritd" ];
       }];
     };
     system = {

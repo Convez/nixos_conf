@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.myConf.gui;
+	hyprland = import ./hyprland.nix;
   awesome = import ./awesome.nix;
   gnome = import ./gnome.nix;
   kde = import ./kde.nix;
@@ -12,7 +13,7 @@ in {
     enable = mkEnableOption
       "Enable the GUI (PC has a graphical interface, useless for WSL)";
   };
-  imports = [ awesome gnome kde ];
+  imports = [ awesome gnome kde hyprland];
   config = mkIf cfg.enable {
     assertions = [{
       assertion = isConfigCorrect;

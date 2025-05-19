@@ -12,6 +12,8 @@ local input = {
   "{",
   "}"
 }
-local row, col = vim.api.nvim_win_get_cursor(0).unpack();
+local curs_pos = vim.api.nvim_win_get_cursor(0);
+local row = curs_pos[1];
+local col = curs_pos[2];
 vim.api.nvim_buf_set_lines(0, row - 1,row-1,false, input)
 end)
