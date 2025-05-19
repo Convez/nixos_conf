@@ -15,8 +15,13 @@ with lib;
       default = [];
       description = "Extra fonts to install. Meslo nerd fonts is always installed.";
     };
+		defaultTerm = mkOption{
+			type = types.package;
+			description = "Default terminal. This sets TERM env variable and is reused to configure desktop envs (ex. Hyprland, AwesomeWM)";
+		};
   };
   config = {
     home.packages = toInstall;
+		home.sessionVariables.TERM = cfg.defaultTerm.meta.mainProgram;
   };
 }

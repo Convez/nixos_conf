@@ -66,7 +66,7 @@ with types; {
       fish.enable = true;
       zsh.enable = true;
     };
-    environment.variables = { TERM = cfg.defaultTerminal.pname; };
+    environment.variables = { TERM = cfg.defaultTerminal.meta.mainProgram; };
     
   };
 }

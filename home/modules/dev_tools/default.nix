@@ -9,15 +9,23 @@ with lib;{
   imports = [ neovim vscodium cli ];
 
   options = {
-    myHome.git = {
-      userName = mkOption {
-        type = types.str;
-        description = "Git user name";
-      };
-      userEmail = mkOption {
-        type = types.str;
-        description = "Git user email";
-      };
+    myHome= {
+			git = {
+				userName = mkOption {
+					type = types.str;
+					description = "Git user name";
+				};
+				userEmail = mkOption {
+					type = types.str;
+					description = "Git user email";
+				};
+			};
+			dev = {
+				defaultEditor = mkOption {
+					type = types.package;
+					description = "Default editor. This sets EDITOR env variable and is reused in gui config (ex. Hyprland/AwesomeWM)";
+				};
+			};
     };
   };
   config = {
@@ -32,5 +40,6 @@ with lib;{
       userName = cfg.userName;
       userEmail = cfg.userEmail;
     };
+		home.sessionVariables.EDITOR = config.myHome.dev.defaultEditor.meta.mainProgram;
   };
 }

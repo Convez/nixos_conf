@@ -19,6 +19,7 @@ in {
       };
       dev = {
         nvim.enable = true;
+				defaultEditor = pkgs.neovim;
       };
       shells = {
         zsh = {
@@ -31,6 +32,7 @@ in {
         tmux = {
           enable = true;
         };
+				defaultTerm = pkgs.alacritty;
       };
       cli = {
         enableKubeTools = true;
