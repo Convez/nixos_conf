@@ -5,7 +5,6 @@ function fish_prompt
 			echo -n (set_color cyan)"<$IN_NIX_SHELL> "
 		end
 	)
-
 	# Set status: green tick or red x
 	set -l shortened_dir (prompt_pwd --full-length-dirs 2)
 	set -l status_line 

@@ -2,7 +2,7 @@
   description = "My NixOS configuration, used on laptop and WSL";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixunstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Use master only if a package is not available in the other channels
@@ -30,7 +30,7 @@
 				inherit system;
         pkgs = import nixpkgs { inherit system; };
       });
-      stateVersion = "24.11";
+      stateVersion = "25.05";
       helper = import ./lib/sys {
         inherit nixpkgs nixunstable nixmaster home-manager;
       };

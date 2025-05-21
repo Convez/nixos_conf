@@ -22,6 +22,7 @@ config={
 		interactiveShellInit = ''
 			${useTmux}
 			set fish_greeting
+			set fish_color_command yellow
 		'';
 	};
 };
