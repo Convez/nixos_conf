@@ -49,7 +49,7 @@ config = mkIf cfg.enable {
     enableCompletion = cfg.enableAutocomplete;
     autosuggestion.enable = cfg.enableAutocomplete;
     syntaxHighlighting.enable = true;
-    initExtra= totalInitConfig;
+    initContent = totalInitConfig;
 
     shellAliases = {
       ll = "ls -l";

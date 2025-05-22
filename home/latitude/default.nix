@@ -29,17 +29,4 @@ in {
 			defaultEditor = pkgs.neovim;
     };
   };
-
-  # Home manager user settings
-  # TODO: Maybe move this to common user config?
-  home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
-    stateVersion = "${stateVersion}";
-  };
-  # Define home packages to install
-  # TODO: Move gnome stuff to gnome config
-  # TODO: Language stuff should not be installed globally. 
-  # Devenv should be used in conjunction with flakes to automatically switch to useful shells
-  home.packages = (with pkgs; [ alacritty ]) ;
 }
