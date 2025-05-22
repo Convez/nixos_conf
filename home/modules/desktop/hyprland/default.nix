@@ -13,6 +13,10 @@ with lib;
 		home.file = {
 			".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
 		};
+	  home.packages = with pkgs; [
+			wofi
+			mate.caja
+		];
 	};
 }
 

@@ -21,6 +21,7 @@ in {
       fish = {
 				enable = true;
       };
+			tmux.enable = true;
 			defaultTerm = pkgs.alacritty;
     };
    dev = {
