@@ -1,6 +1,9 @@
 {pkgs, config, lib, ...}:
 let
 	cfg = config.myHome.gui.hyprland;
+
+
+
 in
 with lib;
 {
@@ -12,10 +15,19 @@ with lib;
 	config= mkIf cfg.enable {
 		home.file = {
 			".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
+			".config/waybar".source = ./config/waybar;
 		};
 	  home.packages = with pkgs; [
 			wofi
 			mate.caja
+			waybar
+			slurp
+			grim
+			swappy
+			wl-clipboard
+			hyprpicker
+			libnotify
+			grimblast
 		];
 	};
 }

@@ -3,11 +3,13 @@ let
 cfg = config.myHome.shells.fish;
 hasTmux = config.myHome.shells.tmux.enable;
 useTmux = if hasTmux then ''
-	if not set -q TMUX
-			set -g TMUX tmux new-session -d -s base
-			eval $TMUX
-			exec tmux attach-session -d -t base
-	end		
+  if not status is-login
+		if not set -q TMUX
+				set -g TMUX tmux new-session -d -s base
+				eval $TMUX
+				exec tmux attach-session -d -t base
+		end		
+	end
 '' else "";
 in
 with lib;

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ pkgs, config, lib, ... }:
 with lib;
 let
   cfg = config.myConf.gui;
@@ -19,7 +19,8 @@ in {
       assertion = isConfigCorrect;
       message = "You can only enable one desktop manager at a time.";
     }];
-
+		# Install all nerd fonts
+	  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     services.xserver.enable = true;
   };
 }
