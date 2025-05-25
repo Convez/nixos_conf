@@ -28,6 +28,8 @@ with lib;
 			hyprpicker
 			libnotify
 			grimblast
+			hyprlock
+			networkmanagerapplet
 		];
 	};
 }
