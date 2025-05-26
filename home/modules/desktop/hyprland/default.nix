@@ -15,6 +15,7 @@ with lib;
 	config= mkIf cfg.enable {
 		home.file = {
 			".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
+			".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
 			".config/waybar".source = ./config/waybar;
 		};
 	  home.packages = with pkgs; [
@@ -26,6 +27,7 @@ with lib;
 			swappy
 			wl-clipboard
 			hyprpicker
+			hyprpaper
 			libnotify
 			grimblast
 			hyprlock
