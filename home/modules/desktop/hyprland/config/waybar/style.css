@@ -19,36 +19,45 @@
   /*background-color: rgba(15,27,53,0.9);*/
   background: linear-gradient(70deg,#e95420, #77216f);
   padding: 4px 6px;
-  margin-top: 6px; 
   margin-left: 6px;
   margin-right: 6px;
+  margin-bottom: 4px;
   border-radius: 10px;
   border-width: 0px;
 }
 
-#clock,
-#custom-power{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
+.modules-right,
+.modules-center{
+  background: linear-gradient(70deg,#e95420, #77216f);
   margin-right: 6px;
-  /*margin-bottom: 4px;*/
+  margin-left: 6px;
+  margin-bottom: 4px;
+  border-radius: 10px 10px 10px 10px;
+  border-width: 0px;
+}
+
+/*Right side of group, round right corners*/
+#clock{
   padding: 4px 2px;
   border-radius: 0 10px 10px 0;
-  border-width: 0px;
+}
+#custom-power{
+  padding: 4px 6px 4px 0;
+  border-radius: 0 10px 10px 0;
 }
 
-#network,
-#custom-lock{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px; 
-  margin-left: 6px;
-  /*margin-bottom: 4px;*/
+
+/*Left side of group, round left corners*/
+#network{
   padding: 4px 2px;
   border-radius: 10px 0 0 10px;
-  border-width: 0px;
+}
+#custom-lock{
+  padding: 4px 2px 4px 0;
+  border-radius: 10px 0 0 10px;
 }
 
-#custom-reboot,
+/*Center side of group*/
 #bluetooth,
 #battery,
 #pulseaudio,
@@ -56,11 +65,11 @@
 #custom-temperature,
 #memory,
 #cpu{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  /*margin-bottom: 4px;*/
   padding: 4px 2px;
-  border-width: 0px;
+}
+
+#custom-reboot{
+  padding: 4px 6px 4px 2px;
 }
 
 #custpm-temperature.critical,

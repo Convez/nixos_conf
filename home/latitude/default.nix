@@ -6,7 +6,6 @@ in {
   imports = [ modules ];
   myHome = {
     gui = {
-      awesome.enable = true;
 			hyprland.enable = true;
     };
     git = {
@@ -15,7 +14,7 @@ in {
     };
     shells = {
       zsh = {
-				enable = true;
+				enable = false;
 				enableAutocomplete = true;
       };
       fish = {
@@ -26,7 +25,7 @@ in {
     };
    dev = {
       nvim.enable = true;
-      vscode.enable = true;
+      vscode.enable = false;
 			defaultEditor = pkgs.neovim;
     };
   };

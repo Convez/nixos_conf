@@ -6,10 +6,12 @@
   "modules-left": [
     "hyprland/workspaces",
     "tray",
+  ],
+	"modules-center": [
     "custom/lock",
     "custom/reboot",
     "custom/power"
-  ],
+	],
   "modules-right": [
     "network",
     "battery",
