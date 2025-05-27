@@ -32,3 +32,5 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+vim.o.completeopt = "menuone,noinsert,noselect,popup,fuzzy"
+vim.o.pumheight = 5

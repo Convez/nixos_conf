@@ -1,4 +1,3 @@
-vim.o.completeopt = "menuone,noinsert,noselect,popup,fuzzy"
 vim.lsp.inlay_hint.enable(true)
 local function cfg_common(client,bufrn)
     print("on attach common")

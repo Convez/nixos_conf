@@ -10,7 +10,6 @@ with lib; {
   config = mkIf cfg.enable {
     home.file.".config/nvim/init.lua".source = ./config/init.lua;
     home.file.".config/nvim/lua".source = ./config/lua;
-    home.file.".config/nvim/lsp".source = ./config/lsp;
     home.file.".config/nvim/after".source = ./config/after;
     programs.neovim = {
       enable = cfg.enable;
