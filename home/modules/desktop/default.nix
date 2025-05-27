@@ -7,4 +7,5 @@ in with lib; { imports = [
   # TODO: Fix KDE module. For some reason it doesn't work with wsl
   # ./kde 
   ]; 
+	config.home.file."backgrounds".source = ./assets;
 }

@@ -22,6 +22,9 @@ with lib;
       ];
       extraConfig = ''
 
+				set-option -g pane-border-style fg=default
+				set-option -g window-style 'fg=default,bg=default'
+				set-option -g window-active-style 'fg=default,bg=default'
         set -ga terminal-overrides ",*256col*:Tc"
         set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
         set-environment -g COLORTERM "truecolor"
