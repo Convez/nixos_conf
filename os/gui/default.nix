@@ -7,7 +7,7 @@ let
   gnome = import ./gnome.nix;
   kde = import ./kde.nix;
   isConfigCorrect =
-    count (x: x) [ cfg.awesome.enable cfg.gnome.enable cfg.kde.enable ] == 1;
+    count (x: x) [ cfg.awesome.enable cfg.hyprland.enable cfg.gnome.enable cfg.kde.enable ] == 1;
 in {
   options.myConf.gui = {
     enable = mkEnableOption
