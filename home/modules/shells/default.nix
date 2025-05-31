@@ -18,6 +18,7 @@ with lib;
 			default = pkgs.xterm;
 			description = "Default terminal. This sets TERM env variable and is reused to configure desktop envs (ex. Hyprland, AwesomeWM)";
 		};
+		manualDirenv = mkEnableOption "Setup direnv hook directly in fish shell (when no nixos)";
   };
   config = {
     home.packages = toInstall;

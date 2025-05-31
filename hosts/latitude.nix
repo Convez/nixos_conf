@@ -15,7 +15,6 @@ in {
     };
     gui = {
       enable = true;
-      awesome = { enable = true; };
 			hyprland.enable = true;
     };
     virtualisation = {

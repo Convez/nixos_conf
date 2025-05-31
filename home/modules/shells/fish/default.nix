@@ -11,6 +11,9 @@ useTmux = if hasTmux then ''
 		end		
 	end
 '' else "";
+manualDirenv = if config.myHome.shells.manualDirenv then ''
+direnv hook fish | source
+'' else "";
 in
 with lib;
 {
@@ -23,6 +26,7 @@ config={
 		enable = cfg.enable;
 		interactiveShellInit = ''
 			${useTmux}
+			${manualDirenv}
 			set fish_greeting
 			set fish_color_command yellow
 		'';

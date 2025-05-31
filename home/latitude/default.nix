@@ -13,6 +13,7 @@ in {
       userEmail = "convezione@proton.me";
     };
     shells = {
+			manualDirenv = true;
       zsh = {
 				enable = false;
 				enableAutocomplete = true;
