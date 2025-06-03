@@ -15,6 +15,7 @@ local setup = function (use)
   use 'Shatur/neovim-ayu'
   use 'sts10/vim-pink-moon'
   use 'rose-pine/neovim'
+	use '~/workspace/nvim_randbg'
 
   -- Treesitter
   use {
