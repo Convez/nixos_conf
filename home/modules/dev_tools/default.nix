@@ -10,22 +10,22 @@ with lib;{
 
   options = {
     myHome= {
-			git = {
-				userName = mkOption {
-					type = types.str;
-					description = "Git user name";
-				};
-				userEmail = mkOption {
-					type = types.str;
-					description = "Git user email";
-				};
-			};
-			dev = {
-				defaultEditor = mkOption {
-					type = types.package;
-					description = "Default editor. This sets EDITOR env variable and is reused in gui config (ex. Hyprland/AwesomeWM)";
-				};
-			};
+      git = {
+        userName = mkOption {
+          type = types.str;
+          description = "Git user name";
+        };
+        userEmail = mkOption {
+          type = types.str;
+          description = "Git user email";
+        };
+      };
+      dev = {
+        defaultEditor = mkOption {
+          type = types.package;
+          description = "Default editor. This sets EDITOR env variable and is reused in gui config (ex. Hyprland/AwesomeWM)";
+        };
+      };
     };
   };
   config = {
@@ -39,7 +39,15 @@ with lib;{
       lfs.enable = true;
       userName = cfg.userName;
       userEmail = cfg.userEmail;
+      extraConfig = {
+        pull.rebase = true;
+        diff = {
+          tool = "vimdiff";
+          mnemonicprecix = true;
+        };
+      };
+      
     };
-		home.sessionVariables.EDITOR = config.myHome.dev.defaultEditor.meta.mainProgram;
+    home.sessionVariables.EDITOR = config.myHome.dev.defaultEditor.meta.mainProgram;
   };
 }

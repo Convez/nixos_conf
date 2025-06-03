@@ -3,7 +3,7 @@ let
 cfg = config.myHome.shells.zsh;
 hasTmux = config.myHome.shells.tmux.enable;
 useTmux = if hasTmux then ''
-			if [ "$TMUX" = "" ]; then tmux; fi
+      if [ "$TMUX" = "" ]; then tmux; fi
 '' else "";
 baseConfig = ''
       bindkey -v
@@ -20,7 +20,7 @@ autoCompleteConf = if cfg.enableAutocomplete then ''
 '' else "";
 concatLines = lib.concatStringsSep "\n" cfg.extraInitConfig; 
 totalInitConfig = ''
-			${useTmux}
+      ${useTmux}
       ${baseConfig}
       ${autoCompleteConf}
       ${concatLines}
@@ -36,7 +36,7 @@ with lib;
 
 options.myHome.shells.zsh = {
   enable = mkEnableOption "Enable Zsh configuration";
-  enableAutocomplete = mkEnableOption "Enable Zsh autocomplete";	
+  enableAutocomplete = mkEnableOption "Enable Zsh autocomplete";  
   extraInitConfig = mkOption {
     type = types. listOf types.str;
     default = [];

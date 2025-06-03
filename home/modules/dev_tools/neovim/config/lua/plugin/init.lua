@@ -9,7 +9,7 @@ local setup = function (use)
   use 'neovim/nvim-lspconfig'
   use 'mfussenegger/nvim-jdtls'
   use 'ThePrimeagen/vim-be-good'
-	use 'vuciv/golf'
+  use 'vuciv/golf'
   
   -- Colorschemes
   use 'Shatur/neovim-ayu'

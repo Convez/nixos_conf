@@ -5,7 +5,7 @@
 { ... }: {
   imports = [ # Include the results of the hardware scan.
     ./audio
-		./bluetooth
+    ./bluetooth
     ./bootloader
     ./gui
     ./localization

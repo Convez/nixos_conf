@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-		nix-linguist.url = "github:Convez/nix-linguist";
+    nix-linguist.url = "github:Convez/nix-linguist";
   };
 
   outputs = {self, nixpkgs, nixunstable, nixmaster, nixos-wsl, home-manager
@@ -27,7 +27,7 @@
     let
       supportedArchitectures = [ "x86_64-linux" ];
       forEachArch = f: nixpkgs.lib.genAttrs supportedArchitectures (system: f {
-				inherit system;
+        inherit system;
         pkgs = import nixpkgs { inherit system; };
       });
       stateVersion = "25.05";
@@ -77,7 +77,7 @@
         };
         devShells = forEachArch ({ pkgs, system }: {
           default = pkgs.mkShell {
-						inputsFrom = [nix-linguist.devShells.${system}.default];
+            inputsFrom = [nix-linguist.devShells.${system}.default];
             packages = with pkgs; [
               cachix
               lorri
@@ -89,7 +89,7 @@
               nixd 
               lua-language-server
               lua
-							fish-lsp
+              fish-lsp
             ];
           };
         });

@@ -8,14 +8,14 @@ in {
     bootloader = {
       enable = true;
       efi.enable = true;
-			grub = {
-				enable = true;
-				device = "/dev/nvme0n1";
-			};
+      grub = {
+        enable = true;
+        device = "/dev/nvme0n1";
+      };
     };
     gui = {
       enable = true;
-			hyprland.enable = true;
+      hyprland.enable = true;
     };
     virtualisation = {
       enable = true;

@@ -15,13 +15,13 @@ with lib;
     allowUnfree = true;
     allowUnfreePredicate = _: true;
   };
-	programs.chromium = {
-		enable = true;
-		package = pkgs.brave;
-		extensions = [
-			{ id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
-			{ id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; }
-			{ id = "ghmbeldphafepmbegfdlkpapadhbakde"; }
-		];
-	};
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; }
+      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; }
+    ];
+  };
 }

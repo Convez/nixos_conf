@@ -256,7 +256,7 @@ under the License.
       </properties>
     </profile>
     -->
-		 <profile>
+     <profile>
             <id>afkl-ams-profile</id>
             <properties>
                  <afkl-internal-proxy>https://nexus.devnet.klm.com</afkl-internal-proxy>

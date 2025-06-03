@@ -6,28 +6,28 @@ in {
   imports = [ modules ];
   myHome = {
     gui = {
-			hyprland.enable = true;
+      hyprland.enable = true;
     };
     git = {
       userName = "Convez";
       userEmail = "convezione@proton.me";
     };
     shells = {
-			manualDirenv = true;
+      manualDirenv = true;
       zsh = {
-				enable = false;
-				enableAutocomplete = true;
+        enable = false;
+        enableAutocomplete = true;
       };
       fish = {
-				enable = true;
+        enable = true;
       };
-			tmux.enable = true;
-			defaultTerm = pkgs.alacritty;
+      tmux.enable = true;
+      defaultTerm = pkgs.alacritty;
     };
    dev = {
       nvim.enable = true;
       vscode.enable = false;
-			defaultEditor = pkgs.neovim;
+      defaultEditor = pkgs.neovim;
     };
   };
 }

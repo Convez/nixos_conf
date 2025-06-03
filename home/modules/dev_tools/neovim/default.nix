@@ -15,6 +15,7 @@ with lib; {
       enable = cfg.enable;
       viAlias = true;
       vimAlias = true;
+      vimdiffAlias = true;
       plugins = (with pkgs.vimPlugins; [ packer-nvim ]);
     };
     home.packages = with pkgs; [

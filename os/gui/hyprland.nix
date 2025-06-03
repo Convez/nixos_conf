@@ -5,13 +5,13 @@ in
 with lib;
 {
   options.myConf.gui.hyprland.enable = mkEnableOption "Install wayland and hyprland";
-	config = mkIf cfg.enable {
-		programs.hyprland = {
-			# Install the packages from nixpkgs
-			enable = true;
-			# Whether to enable XWayland
-			xwayland.enable = true;
-		};
-	};
+  config = mkIf cfg.enable {
+    programs.hyprland = {
+      # Install the packages from nixpkgs
+      enable = true;
+      # Whether to enable XWayland
+      xwayland.enable = true;
+    };
+  };
 }
 
