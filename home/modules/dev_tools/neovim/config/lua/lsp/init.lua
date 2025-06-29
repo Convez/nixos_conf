@@ -9,8 +9,10 @@ local function cfg_common(client,bufrn)
     })
     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true})
     local opts = {buffer = bufnr, remap = false}
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "<leader>K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>ca", function () vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>cd", function () vim.diagnostic.open_float() end, opts)
     vim.keymap.set('i', '<Down>', function()
       if vim.fn.pumvisible() == 1 then
         return '<C-e><Down>' -- close the menu, move cursor
@@ -40,8 +42,6 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
   local client = vim.lsp.get_client_by_id(ctx.client_id)
   if val.kind == "begin" then
     print("🚀 LSP [" .. client.name .. "] starting: " .. val.title)
-  elseif val.kind == "report" then
-    print("📡 LSP [" .. client.name .. "] progress: " .. (val.message or ""))
   elseif val.kind == "end" then
     print("✅ LSP [" .. client.name .. "] done: " .. (val.message or ""))
   end
@@ -78,4 +78,8 @@ end
 
 if(vim.fn.executable('fish-lsp')==1) then
   vim.lsp.enable('fish_lsp')
+end
+
+if(vim.fn.executable('gleam')==1) then
+  vim.lsp.enable('gleam')
 end

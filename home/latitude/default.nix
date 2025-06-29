@@ -4,30 +4,35 @@ let
   modules = import ../modules;
 in {
   imports = [ modules ];
-  myHome = {
-    gui = {
-      hyprland.enable = true;
-    };
-    git = {
-      userName = "Convez";
-      userEmail = "convezione@proton.me";
-    };
-    shells = {
-      manualDirenv = true;
-      zsh = {
-        enable = false;
-        enableAutocomplete = true;
+  config = {
+    myHome = {
+      gui = {
+        hyprland.enable = true;
       };
-      fish = {
-        enable = true;
+      git = {
+        userName = "Convez";
+        userEmail = "convezione@proton.me";
       };
-      tmux.enable = true;
-      defaultTerm = pkgs.alacritty;
+      shells = {
+        manualDirenv = true;
+        zsh = {
+          enable = false;
+          enableAutocomplete = true;
+        };
+        fish = {
+          enable = true;
+        };
+        tmux.enable = true;
+        defaultTerm = pkgs.alacritty;
+      };
+     dev = {
+        nvim.enable = true;
+        vscode.enable = false;
+        defaultEditor = pkgs.neovim;
+      };
     };
-   dev = {
-      nvim.enable = true;
-      vscode.enable = false;
-      defaultEditor = pkgs.neovim;
-    };
+    home.packages = with pkgs; [
+      obsidian
+    ];
   };
 }

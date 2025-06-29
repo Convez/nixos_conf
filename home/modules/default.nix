@@ -18,6 +18,11 @@ with lib;
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
+    commandLineArgs = [
+      "--ozone-platform=wayland"
+      "--enable-features=UseOzonePlatform"
+      "--ozone-platform-hint=wayland"
+    ];
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; }

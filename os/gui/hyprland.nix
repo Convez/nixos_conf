@@ -11,6 +11,7 @@ with lib;
       enable = true;
       # Whether to enable XWayland
       xwayland.enable = true;
+      portalPackage = pkgs.xdg-desktop-portal;
     };
   };
 }
