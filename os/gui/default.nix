@@ -22,5 +22,6 @@ in {
     # Install all nerd fonts
     fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     services.xserver.enable = true;
+    services.logind.lidSwitchExternalPower = "ignore";
   };
 }

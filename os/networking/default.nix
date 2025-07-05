@@ -37,7 +37,12 @@ in with lib; {
     networking.hostName = hostname;
     networking.networkmanager.enable =
       lib.mkForce true; # Easiest to use and most distros use this by default.
-    environment.systemPackages = with pkgs; [ wget curl openssl ];
+    environment.systemPackages = with pkgs; [ 
+      wget 
+      curl 
+      openssl 
+      protonvpn-gui
+    ];
     programs.firefox = {
       enable = true;
       package = pkgs.librewolf;

@@ -40,19 +40,19 @@
   },
   "custom/lock": {
   "format": "<span color='#00FFFF'>  </span>",
-  "on-click": "hyprlock",
+  "on-click": "hyprlock &",
   "tooltip": true,
   "tooltip-format": "Lock"
   },
   "custom/reboot": {
     "format": "<span color='#FFD700'>  </span>",
-    "on-click": "shutdown -r now",
+    "on-click": "shutdown -r now &",
     "tooltip": true,
     "tooltip-format": "Reboot"
   },
   "custom/power": {
     "format": "<span color='#FF4040'>  </span>",
-    "on-click": "shutdown now",
+    "on-click": "shutdown now &",
     "tooltip": true,
     "tooltip-format": "Shutdown"
   },
