@@ -23,6 +23,7 @@ with lib;
   config = {
     home.packages = toInstall;
     home.sessionVariables.TERM = cfg.defaultTerm.meta.mainProgram;
+    home.sessionVariables.XDG_CONFIG_HOME = "/home/convez/.config";
     home.file.".config/alacritty/alacritty.toml".text = '' 
 [window]
 opacity= 0.5
