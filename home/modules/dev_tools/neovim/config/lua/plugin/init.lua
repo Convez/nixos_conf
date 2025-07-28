@@ -27,6 +27,14 @@ local setup = function (use)
   use 'mbbill/undotree'
   -- Git integration in vim
   use 'tpope/vim-fugitive'
+  -- AutoPairs
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
 end
 
 packer.startup(setup)

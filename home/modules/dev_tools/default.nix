@@ -19,6 +19,13 @@ with lib;{
           type = types.str;
           description = "Git user email";
         };
+        sign = {
+          enable = mkEnableOption "Enable GPG key signing";
+          gpgKeyId = mkOption {
+            type = types.str;
+            description = "GPG Key ID. Must be already created on the machine.";
+          };
+        };
       };
       dev = {
         defaultEditor = mkOption {
@@ -40,7 +47,9 @@ with lib;{
       userName = cfg.userName;
       userEmail = cfg.userEmail;
       extraConfig = {
+        user.signingkey = mkIf cfg.sign.enable cfg.sign.gpgKeyId;
         pull.rebase = true;
+        commit.gpgsign = cfg.sign.enable;
         diff = {
           tool = "vimdiff";
           mnemonicprecix = true;

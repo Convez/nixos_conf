@@ -60,6 +60,14 @@
             };
           };
           homeConfigurations = {
+            "convez@bellofigo" = home-manager.lib.homeManagerConfiguration {
+              pkgs = unstable;
+              extraSpecialArgs = { user = "convez"; inherit system stateVersion; };
+              modules = [
+                plasma-manager.homeManagerModules.plasma-manager
+                ./home/bellofigo
+              ];
+            };
             "convez@latitude" = home-manager.lib.homeManagerConfiguration {
               pkgs = unstable;
               extraSpecialArgs = { user = "convez"; inherit system stateVersion; };

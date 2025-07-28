@@ -83,3 +83,29 @@ end
 if(vim.fn.executable('gleam')==1) then
   vim.lsp.enable('gleam')
 end
+
+if(vim.fn.executable('pylsp')==1) then
+  vim.lsp.config('pylsp',{
+   settings = {
+      pylsp = {
+      plugins = {
+          -- formatter options
+          black = { enabled = true },
+          autopep8 = { enabled = false },
+          yapf = { enabled = false },
+          -- linter options
+          pylint = { enabled = true, executable = "pylint" },
+          pyflakes = { enabled = false },
+          pycodestyle = { enabled = false },
+          -- type checker
+          pylsp_mypy = { enabled = true },
+          -- auto-completion options
+          jedi_completion = { fuzzy = true },
+          -- import sorting
+          pyls_isort = { enabled = true },
+      },
+      },
+    }
+  })
+    vim.lsp.enable('pylsp')
+  end
