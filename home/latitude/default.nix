@@ -12,6 +12,10 @@ in {
       git = {
         userName = "Convez";
         userEmail = "convezione@proton.me";
+        sign = {
+          enable = true;
+          gpgKeyId = "1F2EB8BBEDD59B60";
+        };
       };
       shells = {
         manualDirenv = true;
