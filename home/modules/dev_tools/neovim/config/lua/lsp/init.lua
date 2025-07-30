@@ -84,6 +84,24 @@ if(vim.fn.executable('gleam')==1) then
   vim.lsp.enable('gleam')
 end
 
+if(vim.fn.executable('clangd')==1) then
+  vim.lsp.config('clangd', {
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'h', 'hpp'}
+  })
+  vim.lsp.enable('clangd')
+end
+
+if(vim.fn.executable('cmake-language-server')==1) then
+  vim.lsp.config('cmake-language-server',{
+    filetypes= {"cmake"},
+    rootPatterns = {"build/"},
+    initializationOptions = {
+      buildDirectory = "build"
+    }
+  })
+  vim.lsp.enable('cmake-language-server')
+end
+
 if(vim.fn.executable('pylsp')==1) then
   vim.lsp.config('pylsp',{
    settings = {
