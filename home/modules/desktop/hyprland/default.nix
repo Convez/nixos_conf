@@ -32,6 +32,7 @@ with lib;
       grimblast
       hyprlock
       networkmanagerapplet
+      hyprnotify
     ];
   };
 }

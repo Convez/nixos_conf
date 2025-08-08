@@ -29,6 +29,12 @@ config={
       ${manualDirenv}
       set fish_greeting
       set fish_color_command yellow
+      if not set -q NOTIF_STARTED
+        begin
+          hyprnotify &
+        end &> /dev/null
+        set -g NOTIF_STARTED
+      end
     '';
   };
 };
