@@ -7,6 +7,7 @@
     ./audio
     ./bluetooth
     ./bootloader
+    ./gaming
     ./gui
     ./localization
     ./networking

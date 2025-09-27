@@ -13,6 +13,9 @@ in {
         device = "/dev/nvme0n1";
       };
     };
+    gaming = {
+      enable = true;
+    };
     gui = {
       enable = true;
       hyprland.enable = true;
