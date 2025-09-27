@@ -57,6 +57,10 @@ with lib;{
       };
       
     };
+    programs.gpg = {
+      enable = true;
+    };
+    home.packages = with pkgs; [pinentry-qt];
     home.sessionVariables.EDITOR = config.myHome.dev.defaultEditor.meta.mainProgram;
   };
 }
