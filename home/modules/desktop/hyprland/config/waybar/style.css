@@ -19,11 +19,11 @@
   /*background-color: rgba(15,27,53,0.9);*/
   background: linear-gradient(70deg,#e95420, #77216f);
   padding: 4px 6px;
+  border-radius: 10px;
+  border-width: 0px;
   margin-left: 6px;
   margin-right: 6px;
   margin-bottom: 4px;
-  border-radius: 10px;
-  border-width: 0px;
 }
 
 .modules-right,

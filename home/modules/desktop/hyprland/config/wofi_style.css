@@ -1,0 +1,38 @@
+* {
+  font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid";
+  font-weight: bold;
+  font-size: 16px;
+  color: #dcdfe1;
+}
+window {
+  background: transparent;
+}
+
+#outer-box {
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: linear-gradient(70deg,#e95420, #77216f);
+}
+
+#input {
+  margin: 5px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: linear-gradient(70deg, #e95420, #77216f);
+}
+
+#inner-box {
+}
+
+#scroll {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#text {
+}
+
+#entry:selected {
+  border-radius: 10px;
+}
