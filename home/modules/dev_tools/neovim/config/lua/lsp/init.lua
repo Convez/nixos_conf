@@ -13,6 +13,14 @@ local function cfg_common(client,bufrn)
     vim.keymap.set("n", "<leader>K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>ca", function () vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>cd", function () vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set('i', '<Down>', function()
       if vim.fn.pumvisible() == 1 then
         return '<C-e><Down>' -- close the menu, move cursor
@@ -127,3 +135,29 @@ if(vim.fn.executable('pylsp')==1) then
   })
     vim.lsp.enable('pylsp')
   end
+vim.lsp.enable('ansible-language-server')
+vim.lsp.config('ansible-language-server', {
+  cmd = { 'ansible-language-server', '--stdio' },
+  settings = {
+    ansible = {
+      python = {
+        interpreterPath = 'python',
+      },
+      ansible = {
+        path = 'ansible',
+      },
+      executionEnvironment = {
+        enabled = false,
+      },
+      validation = {
+        enabled = true,
+        lint = {
+          enabled = true,
+          path = 'ansible-lint',
+        },
+      },
+    },
+  },
+  filetypes = { 'yaml.ansible' },
+  root_markers = { 'ansible.cfg', '.ansible-lint' },
+})

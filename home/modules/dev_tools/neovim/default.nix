@@ -8,7 +8,6 @@ with lib; {
     enable = mkEnableOption "Install and configure neovim";
   };
   config = mkIf cfg.enable {
-    home.file.".config/nvim/init.lua".source = ./config/init.lua;
     home.file.".config/nvim/lua".source = ./config/lua;
     home.file.".config/nvim/after".source = ./config/after;
     programs.neovim = {
@@ -16,11 +15,13 @@ with lib; {
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+      initLua = builtins.readFile ./config/init.lua;
       plugins = (with pkgs.vimPlugins; [ packer-nvim ]);
     };
     home.packages = with pkgs; [
     # RipGrep needed for telescope to search
       ripgrep
+      opencode
     ];
   };
 

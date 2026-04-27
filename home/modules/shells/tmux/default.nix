@@ -11,7 +11,7 @@ with lib;
     home.file.".tmux.conf".source = ./config/tmux.conf;
     programs.tmux = {
       enable = cfg.enable;
-      terminal = config.myHome.shells.defaultTerm.meta.mainProgram;
+      terminal = "xterm-kitty";
       clock24 = true;
       keyMode = "vi";
       customPaneNavigationAndResize = true;

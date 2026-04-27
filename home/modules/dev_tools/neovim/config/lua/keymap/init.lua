@@ -7,6 +7,8 @@ vim.keymap.set('n', '<c>Q', '<c>v')
 
 
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 
 -- Remove arrow keys. Enforce actual vim navigation in normal mode

@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}:
+{pkgs, config, lib, user, ...}:
 let
   zsh = import ./zsh;
   fish = import ./fish;
@@ -23,10 +23,13 @@ with lib;
   config = {
     home.packages = toInstall;
     home.sessionVariables.TERM = cfg.defaultTerm.meta.mainProgram;
-    home.sessionVariables.XDG_CONFIG_HOME = "/home/convez/.config";
+    home.sessionVariables.XDG_CONFIG_HOME = "/home/${user}/.config";
     home.file.".config/alacritty/alacritty.toml".text = '' 
 [window]
 opacity= 0.5
+    '';
+    home.file.".config/kitty/kitty.conf".text = '' 
+background_opacity 0.5
     '';
   };
 }

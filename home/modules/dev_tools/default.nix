@@ -44,12 +44,15 @@ with lib;{
     programs.git = {
       enable = true;
       lfs.enable = true;
-      userName = cfg.userName;
-      userEmail = cfg.userEmail;
-      extraConfig = {
+      settings = {
+        user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
         user.signingkey = mkIf cfg.sign.enable cfg.sign.gpgKeyId;
         pull.rebase = true;
         commit.gpgsign = cfg.sign.enable;
+        gitreview.username = cfg.userName;
         diff = {
           tool = "vimdiff";
           mnemonicprecix = true;
@@ -60,7 +63,10 @@ with lib;{
     programs.gpg = {
       enable = true;
     };
-    home.packages = with pkgs; [pinentry-qt];
+    home.packages = with pkgs; [
+      pinentry-qt
+      git-review
+    ];
     home.sessionVariables.EDITOR = config.myHome.dev.defaultEditor.meta.mainProgram;
   };
 }

@@ -2,7 +2,7 @@
   description = "My NixOS configuration, used on laptop and WSL";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixunstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Use master only if a package is not available in the other channels
@@ -30,7 +30,7 @@
         inherit system;
         pkgs = import nixpkgs { inherit system; };
       });
-      stateVersion = "25.05";
+      stateVersion = "25.11";
       helper = import ./lib/sys {
         inherit nixpkgs nixunstable nixmaster home-manager;
       };
@@ -62,7 +62,7 @@
           homeConfigurations = {
             "convez@bellofigo" = home-manager.lib.homeManagerConfiguration {
               pkgs = unstable;
-              extraSpecialArgs = { user = "convez"; inherit system stateVersion; };
+              extraSpecialArgs = { user = "enrico.panetta@canonical.com"; inherit system stateVersion; };
               modules = [
                 plasma-manager.homeManagerModules.plasma-manager
                 ./home/bellofigo

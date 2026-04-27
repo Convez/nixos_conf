@@ -27,7 +27,7 @@ show_message $line_num
 
 set -l selection (
     printf '%s\n' $keys | \
-    /home/convez/.nix-profile/bin/wofi -d -L $line_num -p "$search_prompt" -k /dev/null
+    $HOME/.nix-profile/bin/wofi -d -L $line_num -p "$search_prompt" -k /dev/null
 )
 
 if test -z "$selection"
@@ -48,7 +48,7 @@ else
   show_message "Key $selection not found. Prompting for new definition addition"
   
   set -l value_prompt "Enter VALUE for new key '$selection':"
-  set -l new_value (echo "" | /home/convez/.nix-profile/bin/wofi -d -L 1 -p "$value_prompt" -k /dev/null) 
+  set -l new_value (echo "" | $HOME/.nix-profile/bin/wofi -d -L 1 -p "$value_prompt" -k /dev/null) 
   if test -z $new_value
     show_message "Addition of new value cancelled. No new entry."
   else

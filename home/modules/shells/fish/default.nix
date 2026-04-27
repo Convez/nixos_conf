@@ -7,7 +7,7 @@ useTmux = if hasTmux then ''
     if not set -q TMUX
         set -g TMUX tmux new-session -d -s base
         eval $TMUX
-        exec tmux attach-session -d -t base
+        exec tmux  attach-session -d -t base
     end   
   end
 '' else "";

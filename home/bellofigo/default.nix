@@ -27,7 +27,7 @@ in {
           enable = true;
         };
         tmux.enable = true;
-        defaultTerm = pkgs.alacritty;
+        defaultTerm = pkgs.kitty;
       };
      dev = {
         nvim.enable = true;
@@ -37,6 +37,7 @@ in {
     };
     home.packages = with pkgs; [
       obsidian
+      home-manager
     ];
   };
 }
