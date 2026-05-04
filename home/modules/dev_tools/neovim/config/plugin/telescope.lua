@@ -1,22 +1,16 @@
 local builtin = require('telescope.builtin')
 local function gitignore()
-  local gitignore = vim.fn.getcwd() .. './gitignore'
   local file = io.open(".gitignore", "r")
-  local args = {} 
-  
+  local args = {}
+
   if not file then
     return args
   end
 
   for line in file:lines() do
-    -- Trim whitespace
     line = vim.trim(line)
-
-    -- Skip blank lines and comments
     if line ~= '' and not line:match('^#') then
-      -- Skip negated patterns (those starting with "!")
       if not line:match('^!') then
-        -- Ensure directories end with a wildcard
         if line:sub(-1) == '/' then
           line = line .. '*'
         end
@@ -36,8 +30,8 @@ vim.keymap.set('n', '<leader>ps', function()
   builtin.grep_string({
     search = vim.fn.input("Grep > "),
     additional_args = vim.list_extend({
-        '--hidden',
-        '--ignore',
-      } , gitignore())
+      '--hidden',
+      '--ignore',
+    }, gitignore())
   });
 end)
