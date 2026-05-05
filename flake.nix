@@ -64,7 +64,7 @@
               pkgs = unstable;
               extraSpecialArgs = { user = "enrico.panetta@canonical.com"; inherit system stateVersion; };
               modules = [
-                plasma-manager.homeManagerModules.plasma-manager
+                plasma-manager.homeModules.plasma-manager
                 ./home/bellofigo
               ];
             };
@@ -72,7 +72,7 @@
               pkgs = unstable;
               extraSpecialArgs = { user = "convez"; inherit system stateVersion; };
               modules = [
-                plasma-manager.homeManagerModules.plasma-manager
+                plasma-manager.homeModules.plasma-manager
                 ./home/latitude
               ];
             };

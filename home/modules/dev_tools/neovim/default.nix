@@ -32,7 +32,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     programs.neovim = {
-      enable = true;
+      enable = cfg.enable;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
@@ -108,6 +108,7 @@ with lib; {
         nixd
         bash-language-server
         fish-lsp
+        marksman
       ];
     };
 

@@ -69,6 +69,7 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('nixd')
 vim.lsp.enable('bashls')
 vim.lsp.enable('fish_lsp')
+vim.lsp.enable('marksman')
 
 ------------------------------------------------------------
 -- Direnv-provided LSPs (guarded)

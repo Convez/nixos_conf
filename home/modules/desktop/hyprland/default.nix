@@ -19,7 +19,7 @@ with lib;
     };
     home.packages = with pkgs; [
       wofi
-      mate.caja
+      caja
       waybar
       slurp
       grim
