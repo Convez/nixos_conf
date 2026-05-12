@@ -35,9 +35,15 @@ in {
         defaultEditor = pkgs.neovim;
       };
     };
+    # Non-NixOS: add Nix paths to XDG_DATA_DIRS for drun/app launchers
+    targets.genericLinux.enable = true;
+
+    # Let HM manage its own binary (idiomatic standalone setup)
+    programs.home-manager.enable = true;
+
     home.packages = with pkgs; [
       obsidian
-      home-manager
+      openai-whisper
     ];
   };
 }

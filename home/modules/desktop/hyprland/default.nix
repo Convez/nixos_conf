@@ -13,6 +13,7 @@ with lib;
     home.file = {
       ".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
       ".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
+      ".config/mako".source = ./config/mako;
       ".config/wofi/style.css".source = ./config/wofi_style.css;
       ".config/waybar".source = ./config/waybar;
       ".scripts".source = ./scripts;
@@ -31,7 +32,6 @@ with lib;
       grimblast
       hyprlock
       networkmanagerapplet
-      hyprnotify
     ];
   };
 }

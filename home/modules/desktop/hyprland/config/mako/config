@@ -1,0 +1,44 @@
+# Mako notification daemon config
+# Matches Hyprland theme (Ubuntu orange / Canonical aubergine)
+
+# Layout
+max-visible=5
+sort=-time
+layer=overlay
+anchor=top-right
+margin=10
+
+# Appearance
+font=Sans 11
+width=350
+height=120
+padding=12
+border-size=2
+border-radius=10
+border-color=#e95420
+background-color=#2d2d2dee
+text-color=#ffffff
+icon-path=/usr/share/icons/Adwaita
+max-icon-size=48
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+group-by=app-name
+
+# Click actions
+# Left click: invoke the app's default action (focuses/opens the app via xdg-activation)
+on-button-left=invoke-default-action
+# Middle click: show action menu if multiple actions available
+on-button-middle=exec makoctl menu -n "$id" -- wofi --dmenu -p "Action:"
+# Right click: dismiss
+on-button-right=dismiss
+
+# Urgency overrides
+[urgency=low]
+border-color=#595959
+default-timeout=3000
+
+[urgency=high]
+border-color=#ff0000
+default-timeout=0
